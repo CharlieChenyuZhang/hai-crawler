@@ -1,3 +1,1 @@
-FIRECRAWL_API_KEY=fc-e2c97d8e92074123ab779350d54dbc2f
-QUERY="mindfulness journaling prompts"          # default search term
-MAX_RESULTS=25                                   # number of pages to fetch (1-100)
+.env
