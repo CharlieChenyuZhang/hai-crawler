@@ -4,6 +4,10 @@
 
 The code extracts mindfullness journal prompts on the internet. It can be re-purposed to extract any contents just simply change the search queries in the file `serp_firecrawl_prompt_extractor.py`
 
+# what's in discovered_urls
+
+it saves the search results including a list of URLs returned by the search query.
+
 # how does it work
 
 It uses SerpAPI (Google Search) to find 200 results (you can chagne this number if you want) per search query and use FireCrawl to crawl each of the web link to extract the web contents. Here, we don't return the raw HTML, isntead, we use a prompt to extract the information that inerests us. (in this case, the journaling prompt)

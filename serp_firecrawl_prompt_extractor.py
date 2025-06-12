@@ -196,7 +196,7 @@ def main() -> None:
         # Save discovered URLs to a text file with a timestamp and query
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         safe_query = ''.join(c if c.isalnum() or c in (' ', '-') else '_' for c in query)[:50].replace(' ', '_')
-        urls_file = f"discovered_urls_{safe_query}_{timestamp}.txt"
+        urls_file = f"discovered_urls/discovered_urls_{safe_query}_{timestamp}.txt"
         try:
             with open(urls_file, "w", encoding="utf-8") as f:
                 f.write(f"Query: {query}\n")
