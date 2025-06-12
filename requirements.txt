@@ -1,0 +1,3 @@
+requests>=2.31.0       # HTTP client used for /search and /extract calls
+python-dotenv>=1.0.0   # (optional) loads FIRECRAWL_API_KEY and other vars from .env
+google-search-results  # For GoogleSearch API
