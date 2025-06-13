@@ -111,4 +111,4 @@ def process_prompts_csv(input_csv: str, output_csv: str, cache_file: str = "scra
 
 if __name__ == "__main__":
     # process_prompts_csv("prompts.csv", "enriched_prompts.csv")
-    process_prompts_csv("subset.csv", "enriched_prompts.csv")
+    process_prompts_csv("prompts.csv", "enriched_prompts.csv")
