@@ -30,3 +30,11 @@ Then, run the following in your terminal.
 `npm install -r requirements.txt`
 
 `python serp_firecrawl_prompt_extractor.py`
+
+# processing steps
+
+[1] run `python serp_firecrawl_prompt_extractor.py` to get the `prompts.csv` with the prmopts
+
+[2] run `python extract_meta_data.py` to get `enriched_prompts.csv` with metadata (e.g. name of the author)
+
+[3] run `python quality_check.py` to get `filtered_prompts.csv` and `inferior_list.csv` (this is the list of prompts that did not pass the quality check)
