@@ -1,7 +1,0 @@
-Cluster shares (% of corpus):
-  Cluster 0: 9.0%
-  Cluster 1: 39.0%
-  Cluster 2: 16.0%
-  Cluster 3: 11.0%
-  Cluster 4: 16.0%
-  Cluster 5: 9.0%

@@ -1,4 +1,0 @@
-1.0% of prompts contain an explicit time frame.
-
-Top time-frames:
-  last year: 100.0%

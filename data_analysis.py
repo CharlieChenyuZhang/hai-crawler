@@ -2,17 +2,8 @@
 """
 analysis_pipeline.py
 
-A combined pipeline to run:
- 1. Thematic Clustering
- 2. Topic Modeling
- 3. Frequent Prompt Analysis
- 4. Time-Frame Anchor Detection
- 5. Number Mention Counting
- 6. Verb Frequency Analysis
-
-Adjust parameters and output paths below or via command-line flags.
-
-FIXME: remember to dedup.
+A combined pipeline that also generates a final_output.txt
+matching the Chenyu Data Analysis Outline JUN 16.
 """
 
 import os
@@ -48,49 +39,55 @@ def load_prompts(csv_path):
 # 1. Thematic Clustering
 # -----------------------------------------------------------------------------
 def run_clustering(df, n_clusters, out_dir):
-    print(f"[1] Starting clustering with {n_clusters} clusters...")
     vectorizer = TfidfVectorizer(max_df=0.8, min_df=5, stop_words='english')
     X = vectorizer.fit_transform(df['prompt'])
     km = KMeans(n_clusters=n_clusters, random_state=42)
-    df['cluster'] = km.fit_predict(X)
+    labels = km.fit_predict(X)
+    df['cluster'] = labels
 
-    # save prompts with cluster labels
-    out_csv = os.path.join(out_dir, "prompts_with_clusters.csv")
-    df.to_csv(out_csv, index=False)
-    print(f"[1] Saved clustered prompts → {out_csv}")
+    # 1. Shares
+    shares = (pd.Series(labels)
+              .value_counts(normalize=True)
+              .sort_index() * 100)
 
-    # share distribution
-    shares = df['cluster'].value_counts(normalize=True).sort_index() * 100
-    with open(os.path.join(out_dir, "cluster_shares.txt"), 'w') as f:
-        f.write(f"Cluster shares (% of corpus):\n")
-        for i, pct in shares.items():
-            f.write(f"  Cluster {i}: {pct:.1f}%\n")
+    # 2. Representative prompts
+    reps = {}
+    for i in range(n_clusters):
+        centroid = km.cluster_centers_[i]
+        # compute distance from each doc vector to this centroid
+        dists = np.linalg.norm(X - centroid, axis=1)
+        reps[i] = df.loc[np.argsort(dists)[:2], 'prompt'].tolist()
 
-    # representative prompts (closest to centroid)
-    order_centroids = km.cluster_centers_.argsort()[:, ::-1]
+    # 3. Top terms per cluster → “name”
     terms = vectorizer.get_feature_names_out()
+    order = km.cluster_centers_.argsort()[:, ::-1]
+    top_terms = {i: [terms[idx] for idx in order[i][:3]] for i in range(n_clusters)}
+
+    # write the existing files too
+    df.to_csv(os.path.join(out_dir, "prompts_with_clusters.csv"), index=False)
+    with open(os.path.join(out_dir, "cluster_shares.txt"), 'w') as f:
+        f.write("Cluster shares (%):\n")
+        for i, pct in shares.items():
+            f.write(f"  Cluster {i+1}: {pct:.1f}%\n")
     with open(os.path.join(out_dir, "cluster_representatives.txt"), 'w') as f:
         for i in range(n_clusters):
-            centroid = km.cluster_centers_[i]
-            dists = np.linalg.norm(X - centroid, axis=1)
-            reps = df.loc[np.argsort(dists)[:2], 'prompt'].tolist()
-            f.write(f"Cluster {i} examples:\n")
-            f.write(f"  1) {reps[0]}\n")
-            f.write(f"  2) {reps[1]}\n\n")
-    print(f"[1] Saved cluster shares & representatives → {out_dir}")
-    print(f"[1] Clustering complete.\n")
+            f.write(f"Cluster {i+1} examples:\n")
+            f.write(f"  1) {reps[i][0]}\n")
+            f.write(f"  2) {reps[i][1]}\n\n")
+
+    return shares, reps, top_terms, df
 
 # -----------------------------------------------------------------------------
 # 2. Topic Modeling
 # -----------------------------------------------------------------------------
 def run_topic_modeling(df, num_topics, num_words, out_dir):
-    print(f"[2] Starting topic modeling with {num_topics} topics...")
     nltk.download('punkt')
     nltk.download('stopwords')
     stop = set(stopwords.words('english'))
 
     texts = [
-        [w for w in word_tokenize(doc.lower()) if w.isalpha() and w not in stop]
+        [w for w in word_tokenize(doc.lower())
+         if w.isalpha() and w not in stop]
         for doc in df['prompt']
     ]
     dictionary = corpora.Dictionary(texts)
@@ -100,24 +97,30 @@ def run_topic_modeling(df, num_topics, num_words, out_dir):
         passes=10, random_state=42
     )
 
-    out_txt = os.path.join(out_dir, "lda_topics.txt")
-    with open(out_txt, 'w') as f:
-        for idx, topic in lda.print_topics(num_topics=num_topics, num_words=num_words):
-            f.write(f"Topic {idx}: {topic}\n")
-    print(f"[2] Saved LDA topics → {out_txt}")
-    print(f"[2] Topic modeling complete.\n")
+    topics = {}
+    for idx, topic in lda.print_topics(num_topics=num_topics,
+                                       num_words=num_words):
+        # parse into a clean list of keywords
+        kws = re.findall(r'\"(.*?)\"', topic)
+        topics[idx] = kws
+
+    with open(os.path.join(out_dir, "lda_topics.txt"), 'w') as f:
+        for idx, kws in topics.items():
+            f.write(f"Topic {idx+1}: {', '.join(kws)}\n")
+
+    return topics
 
 # -----------------------------------------------------------------------------
 # 3. Frequent Prompt Analysis
 # -----------------------------------------------------------------------------
 def run_frequency_analysis(df, top_n, out_dir):
-    print(f"[3] Starting frequency analysis for top {top_n} prompts...")
     counts = Counter(df['prompt'])
     top = counts.most_common(top_n)
-    out_csv = os.path.join(out_dir, "top_prompts.csv")
-    pd.DataFrame(top, columns=['prompt','count']).to_csv(out_csv, index=False)
-    print(f"[3] Saved top {top_n} prompts → {out_csv}")
-    print(f"[3] Frequency analysis complete.\n")
+    with open(os.path.join(out_dir, "top_prompts.csv"), 'w') as f:
+        f.write("prompt,count\n")
+        for p, c in top:
+            f.write(f"\"{p}\",{c}\n")
+    return top
 
 # -----------------------------------------------------------------------------
 # 4. Time-Frame Anchor Detection
@@ -128,91 +131,148 @@ TIME_REGEX = re.compile(
 )
 
 def run_timeframe_analysis(df, out_dir):
-    print(f"[4] Starting time-frame anchor detection...")
     matches = df['prompt'].str.count(TIME_REGEX)
-    total, with_frame = len(df), (matches>0).sum()
-    perc = with_frame/total*100
+    total = len(df)
+    with_frame = (matches > 0).sum()
+    perc = with_frame / total * 100
 
-    out_txt = os.path.join(out_dir, "timeframe_stats.txt")
-    with open(out_txt, 'w') as f:
+    # breakdown
+    all_frames = df['prompt'].str.findall(TIME_REGEX) \
+                   .explode().dropna() \
+                   .apply(lambda x: ' '.join(x))
+    frame_counts = (all_frames.value_counts(normalize=True) * 100).head(3)
+
+    with open(os.path.join(out_dir, "timeframe_stats.txt"), 'w') as f:
         f.write(f"{perc:.1f}% of prompts contain an explicit time frame.\n\n")
-        # breakdown
-        all_frames = df['prompt'].str.findall(TIME_REGEX).explode().dropna()
-        frame_counts = all_frames.apply(lambda x: ' '.join(x)).value_counts(normalize=True)*100
-        f.write("Top time-frames:\n")
-        for frame, pct in frame_counts.head(3).items():
+        f.write("Top time frames:\n")
+        for frame, pct in frame_counts.items():
             f.write(f"  {frame}: {pct:.1f}%\n")
-    print(f"[4] Saved time-frame stats → {out_txt}")
-    print(f"[4] Time-frame anchor detection complete.\n")
+
+    return perc, frame_counts.to_dict()
 
 # -----------------------------------------------------------------------------
 # 5. Number Mention Counting
 # -----------------------------------------------------------------------------
 def run_number_analysis(df, top_n, out_dir):
-    print(f"[5] Starting number mention counting for top {top_n} numbers...")
     nums = re.findall(r'\b(\d+)\b', ' '.join(df['prompt']))
     counts = Counter(nums).most_common(top_n)
-    out_csv = os.path.join(out_dir, "top_numbers.csv")
-    pd.DataFrame(counts, columns=['number','count']).to_csv(out_csv, index=False)
-    print(f"[5] Saved top {top_n} numbers → {out_csv}")
-    print(f"[5] Number mention counting complete.\n")
+    with open(os.path.join(out_dir, "top_numbers.csv"), 'w') as f:
+        f.write("number,count\n")
+        for num, cnt in counts:
+            f.write(f"{num},{cnt}\n")
+    return counts
 
 # -----------------------------------------------------------------------------
 # 6. Verb Frequency Analysis
 # -----------------------------------------------------------------------------
 def run_verb_analysis(df, top_n, out_dir):
-    print(f"[6] Starting verb frequency analysis for top {top_n} verbs...")
-    nlp = spacy.load("en_core_web_sm") # FIXME: use a _lg model instead
-    verb_lemmas = []
+    nlp = spacy.load("en_core_web_sm")
+    verbs = []
     for doc in nlp.pipe(df['prompt'], batch_size=50):
-        verb_lemmas.extend([t.lemma_ for t in doc if t.pos_=="VERB"])
-    counts = Counter(verb_lemmas).most_common(top_n)
-    out_csv = os.path.join(out_dir, "top_verbs.csv")
-    pd.DataFrame(counts, columns=['verb','count']).to_csv(out_csv, index=False)
-    print(f"[6] Saved top {top_n} verbs → {out_csv}")
-    print(f"[6] Verb frequency analysis complete.\n")
+        verbs.extend([t.lemma_ for t in doc if t.pos_ == "VERB"])
+    counts = Counter(verbs).most_common(top_n)
+    with open(os.path.join(out_dir, "top_verbs.csv"), 'w') as f:
+        f.write("verb,count\n")
+        for v, c in counts:
+            f.write(f"{v},{c}\n")
+    return counts
 
 # -----------------------------------------------------------------------------
 # Main & Argument Parsing
 # -----------------------------------------------------------------------------
 def main():
-    parser = argparse.ArgumentParser(description="Run full prompts analysis pipeline.")
+    parser = argparse.ArgumentParser(
+        description="Run full prompts analysis pipeline.")
     parser.add_argument("csv", help="Path to filtered_enriched_prompts_subset.csv")
     parser.add_argument("--out", default="analysis_outputs",
                         help="Output directory (will be created if needed)")
-    parser.add_argument("--clusters", type=int, default=6, help="Number of clusters")
-    parser.add_argument("--topics", type=int, default=6, help="Number of LDA topics")
-    parser.add_argument("--topic_words", type=int, default=8, help="Words per LDA topic")
-    parser.add_argument("--top_prompts", type=int, default=30, help="How many top prompts")
-    parser.add_argument("--top_numbers", type=int, default=10, help="How many top numbers")
-    parser.add_argument("--top_verbs", type=int, default=5, help="How many top verbs")
+    parser.add_argument("--clusters", type=int, default=6,
+                        help="Number of clusters")
+    parser.add_argument("--topics", type=int, default=6,
+                        help="Number of LDA topics")
+    parser.add_argument("--topic_words", type=int, default=8,
+                        help="Words per LDA topic")
+    parser.add_argument("--top_prompts", type=int, default=30,
+                        help="How many top prompts")
+    parser.add_argument("--top_numbers", type=int, default=10,
+                        help="How many top numbers")
+    parser.add_argument("--top_verbs", type=int, default=5,
+                        help="How many top verbs")
     args = parser.parse_args()
 
-    print("\n=== Prompt Analysis Pipeline ===")
-    print(f"Input CSV: {args.csv}")
-    print(f"Output directory: {args.out}")
-    print(f"Clusters: {args.clusters}, Topics: {args.topics}, Words/Topic: {args.topic_words}")
-    print(f"Top Prompts: {args.top_prompts}, Top Numbers: {args.top_numbers}, Top Verbs: {args.top_verbs}\n")
-
     os.makedirs(args.out, exist_ok=True)
-    print("[0] Loading prompts...")
     df = load_prompts(args.csv)
-    print(f"[0] Loaded {len(df)} prompts.\n")
 
-    print("[Pipeline] Running clustering...")
-    run_clustering(df, args.clusters, args.out)
-    print("[Pipeline] Running topic modeling...")
-    run_topic_modeling(df, args.topics, args.topic_words, args.out)
-    print("[Pipeline] Running frequency analysis...")
-    run_frequency_analysis(df, args.top_prompts, args.out)
-    print("[Pipeline] Running time-frame anchor detection...")
-    run_timeframe_analysis(df, args.out)
-    print("[Pipeline] Running number mention counting...")
-    run_number_analysis(df, args.top_numbers, args.out)
-    print("[Pipeline] Running verb frequency analysis...")
-    run_verb_analysis(df, args.top_verbs, args.out)
+    # 1. Clustering
+    shares, reps, top_terms, df = run_clustering(df, args.clusters, args.out)
 
-    print("✅ All analyses complete.")
+    # 2. Topic Modeling
+    topics = run_topic_modeling(df, args.topics, args.topic_words, args.out)
+
+    # 3. Frequency Analysis
+    top_prompts = run_frequency_analysis(df, args.top_prompts, args.out)
+
+    # 4. Time-Frame
+    timeframe_perc, timeframe_top = run_timeframe_analysis(df, args.out)
+
+    # 5. Numbers
+    number_counts = run_number_analysis(df, args.top_numbers, args.out)
+
+    # 6. Verbs
+    verb_counts = run_verb_analysis(df, args.top_verbs, args.out)
+
+    # Map each of the top prompts back to its cluster
+    prompt_to_cluster = {row['prompt']: row['cluster']+1 for _, row in df.iterrows()}
+    top_prompts_with_cluster = [
+        (p, c, prompt_to_cluster.get(p, None))
+        for p, c in top_prompts
+    ]
+
+    # Write the final_output.txt
+    final_path = os.path.join(args.out, "final_output.txt")
+    with open(final_path, 'w') as f:
+        f.write("SECTION 1 – WHAT BIG THEMES SHAPE THE CORPUS?\n")
+        f.write(f"1. {args.clusters} clusters emerge.\n")
+        f.write("2. Cluster names, descriptions, and shares:\n")
+        for i, pct in shares.items():
+            # cluster numbering from 1
+            f.write(f"  • Cluster {i+1} ({pct:.1f}%): ")
+            name = ", ".join(top_terms[i])
+            f.write(f"Name = \"{name}\", Description = top terms {name}\n")
+        f.write("3. Representative prompts:\n")
+        for i, examples in reps.items():
+            f.write(f"  • Cluster {i+1} examples: {examples[0]} / {examples[1]}\n")
+
+        f.write("\nSECTION 2 – WHICH TOPICS SURFACE MOST OFTEN?\n")
+        for idx, kws in topics.items():
+            f.write(f"  • Topic {idx+1}: {', '.join(kws)}\n")
+
+        f.write("\nSECTION 3 – WHICH PROMPTS KEEP COMING BACK?\n")
+        for rank, (p, cnt, cl) in enumerate(top_prompts_with_cluster, start=1):
+            if rank <= 10:
+                f.write(f"  {rank}. “{p}” ({cnt} occurrences; cluster {cl})\n")
+        f.write("  (… and up to top 30 as desired …)\n")
+
+        f.write("\nSECTION 4 – WHEN DO PROMPTS PLACE US IN TIME?\n")
+        f.write(f"8. {timeframe_perc:.1f}% of prompts contain an explicit time frame.\n")
+        runners = list(timeframe_top.items())
+        f.write(f"9. Most common: {runners[0][0]} ({runners[0][1]:.1f}%)\n")
+        if len(runners) > 1:
+            f.write(f"   Runners-up: {runners[1][0]} ({runners[1][1]:.1f}%), "
+                    f"{runners[2][0]} ({runners[2][1]:.1f}%)\n")
+
+        f.write("\nSECTION 5 – WHAT NUMBERS SHOW UP THE MOST?\n")
+        for num, cnt in number_counts:
+            f.write(f"  • {num} ({cnt} occurrences)\n")
+
+        f.write("\nSECTION 6 – WHICH VERBS DRIVE THE ACTION?\n")
+        # Most frequent verb
+        f.write(f"11. Most frequent verb: {verb_counts[0][0]} ({verb_counts[0][1]} occurrences)\n")
+        f.write("12. Next four verbs:\n")
+        for v, c in verb_counts[1:5]:
+            f.write(f"  • {v} ({c} occurrences)\n")
+
+    print(f"✅ All analyses complete. Final report → {final_path}")
 
 if __name__ == "__main__":
     main()
