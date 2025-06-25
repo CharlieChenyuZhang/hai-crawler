@@ -26,6 +26,8 @@ from nltk.corpus import stopwords
 # spaCy for verb extraction
 import spacy
 
+import openai
+
 # -----------------------------------------------------------------------------
 # 0. Load data
 # -----------------------------------------------------------------------------
@@ -34,6 +36,27 @@ def load_prompts(csv_path):
     if 'prompt' not in df.columns:
         raise ValueError("CSV must contain a 'prompt' column")
     return df.dropna(subset=['prompt']).reset_index(drop=True)
+
+def name_cluster(reps, top_terms):
+    """
+    reps:  list of 2 rep prompts for the cluster
+    top_terms: list of top-3 terms for the cluster
+    """
+    prompt = (
+        "You are clustering user‐generated prompts. "
+        "Given these representative examples:\n\n"
+        + "\n".join(f"- {ex}" for ex in reps)
+        + "\n\nAnd these keywords: "
+        + ", ".join(top_terms)
+        + "\n\nSuggest a 3–5 word descriptive theme name for this cluster."
+    )
+    resp = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role":"user","content":prompt}],
+        temperature=0.0,
+        max_tokens=32,
+    )
+    return resp.choices[0].message.content.strip().strip('"')
 
 # -----------------------------------------------------------------------------
 # 1. Thematic Clustering - K-Means clustering
@@ -206,6 +229,13 @@ def main():
     # 1. Clustering
     shares, reps, top_terms, df = run_clustering(df, args.clusters, args.out)
 
+    # ─── generate human‐readable names ──────────────────────────────────
+    cluster_names = {}
+    for i in range(args.clusters):
+        # reps[i] is list of two examples, top_terms[i] is list of 3 keywords
+        name = name_cluster(reps[i], top_terms[i])
+        cluster_names[i] = name
+
     # 2. Topic Modeling
     topics = run_topic_modeling(df, args.topics, args.topic_words, args.out)
 
@@ -235,10 +265,8 @@ def main():
         f.write(f"1. {args.clusters} clusters emerge.\n")
         f.write("2. Cluster names, descriptions, and shares:\n")
         for i, pct in shares.items():
-            # cluster numbering from 1
-            f.write(f"  • Cluster {i+1} ({pct:.1f}%): ")
-            name = ", ".join(top_terms[i])
-            f.write(f"Name = \"{name}\", Description = top terms {name}\n")
+            f.write(f"  • Cluster {i+1} ({pct:.1f}%): “{cluster_names[i]}” "
+                    f"(keywords: {', '.join(top_terms[i])})\n")
         f.write("3. Representative prompts:\n")
         for i, examples in reps.items():
             f.write(f"  • Cluster {i+1} examples: {examples[0]} / {examples[1]}\n")
