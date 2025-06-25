@@ -18,6 +18,10 @@
 
 `python -m spacy download en_core_web_sm`
 
+### how to run data_analysis.py
+
+`python data_analysis.py ./_filtered_enriched_prompts_subset.csv `
+
 # what it does
 
 The code extracts mindfullness journal prompts on the internet. It can be re-purposed to extract any contents just simply change the search queries in the file `serp_firecrawl_prompt_extractor.py`
