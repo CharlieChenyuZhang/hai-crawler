@@ -298,7 +298,7 @@ def main():
                     f"{runners[2][0]} ({runners[2][1]:.1f}%)\n")
 
         f.write("\nSECTION 5 – WHAT NUMBERS SHOW UP THE MOST?\n")
-        for (num, word), cnt in number_counts:
+        for (num, word), cnt in sorted(number_counts, key=lambda x: x[1], reverse=True):
             f.write(f"  • {num} ({word}): {cnt} occurrences\n")
 
         f.write("\nSECTION 6 – WHICH VERBS DRIVE THE ACTION?\n")

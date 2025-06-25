@@ -1,72 +1,542 @@
 SECTION 1 – WHAT BIG THEMES SHAPE THE CORPUS?
 1. 6 clusters emerge.
 2. Cluster names, descriptions, and shares:
-  • Cluster 1 (9.0%): 'Writing Letters to Younger Self' (keywords: write, self, thing)
-  • Cluster 2 (39.0%): 'Personal Reflection and Mindfulness' (keywords: life, thoughts, mind)
-  • Cluster 3 (16.0%): 'Daily Reflections and Gratitude' (keywords: today, feel, grateful)
-  • Cluster 4 (11.0%): 'Reflective Mental Perception Analysis' (keywords: think, grateful, mind)
-  • Cluster 5 (16.0%): 'Feelings and Personal Experiences' (keywords: feel, makes, things)
-  • Cluster 6 (9.0%): 'Daily Reflections on Experiences' (keywords: things, today, write)
+  • Cluster 1 (67.4%): 'Personal Reflections and Beliefs' (keywords: write, time, did)
+  • Cluster 2 (8.9%): 'Self-Reflection and Personal Desires' (keywords: life, write, want)
+  • Cluster 3 (6.2%): 'Self-Reflection in Solitude' (keywords: today, grateful, did)
+  • Cluster 4 (5.0%): 'Personal Reflection Questions' (keywords: like, does, look)
+  • Cluster 5 (5.0%): 'Making Personal Improvement Lists' (keywords: things, list, make)
+  • Cluster 6 (7.5%): 'Personal Feelings and Self-Indulgence' (keywords: feel, makes, make)
 3. Representative prompts:
-  • Cluster 1 examples: Write a letter to your younger self, talking about mental health. What would you want to tell them? / Write a letter to your younger self. What advice would you give him or her?
-  • Cluster 2 examples: Who do you most admire? Why? / Close your eyes and imagine a peaceful, calm place. Where is that place?
-  • Cluster 3 examples: What am I looking forward to today? / What’s one moment from today (or yesterday) that made you smile?
-  • Cluster 4 examples: How do you think others see you? Why? / Think about the last time you had a mental spiral. What caused it, and how did you get out of it?
-  • Cluster 5 examples: When do you feel most alive? / Do you have a hobby? How do you feel when you're engaged with it?
-  • Cluster 6 examples: Name three beautiful things that you heard today. / Name three things that challenged you today.
+  • Cluster 1 examples: Do you have any numbers you are superstitious about? / What you SHOULD NOT do, that you do. Why?
+  • Cluster 2 examples: How can you give yourself that now? / How would you describe yourself?
+  • Cluster 3 examples: Who am I when no one is around? / Who am I when I’m alone?
+  • Cluster 4 examples: What could I do less of? / What intimidates you?
+  • Cluster 5 examples: What can you do less of? What can you do more of? / How can I do more for others?
+  • Cluster 6 examples: How will you describe your soulmate? / How do you indulge yourself? How can you indulge yourself more often?
 
 SECTION 2 – WHICH TOPICS SURFACE MOST OFTEN?
-  • Topic 1: today, feel, name, three, things, made, think, life
-  • Topic 2: things, today, want, think, people, mean, future, five
-  • Topic 3: feel, write, would, worry, self, letter, things, think
-  • Topic 4: one, would, today, life, place, thing, change, perfect
-  • Topic 5: grateful, think, feel, home, live, words, describe, mind
-  • Topic 6: feel, makes, people, thoughts, like, typically, think, outside
+  • Topic 1: things, make, feel, today, life, list, three, grateful
+  • Topic 2: today, year, goals, one, take, want, week, new
+  • Topic 3: like, would, describe, life, write, love, person, look
+  • Topic 4: need, write, go, feel, time, feeling, challenge, reflect
+  • Topic 5: time, day, describe, write, moment, something, change, last
+  • Topic 6: would, could, one, write, want, thing, self, letter
 
 SECTION 3 – WHICH PROMPTS KEEP COMING BACK?
-  1. 'I am aware of my strengths and skills, which have helped me on my path to where I am today. I feel grateful for…' (1 occurrences; cluster 3)
-  2. 'I think of the people who are important to me. These people are my family and/or my friends. I reflect on how they affect my life and how I feel when I spend time with them. With these thoughts in mind, I am grateful for…' (1 occurrences; cluster 2)
-  3. 'I think of the home that I live in, and I reflect on how it provides my family and me with a safe, secure, stable place for us to live. I feel grateful for…' (1 occurrences; cluster 4)
-  4. 'I think of the work that I perform in my career or at home. I reflect on how it affects my life, including my physical and emotional wellbeing. With these thoughts in mind, I feel grateful for…' (1 occurrences; cluster 2)
-  5. 'I think of the area where I live. I think of the shops where we buy food, the people we have met, and the experiences we have had. I feel grateful for…' (1 occurrences; cluster 4)
-  6. 'Name three actions that made you feel loved today.' (1 occurrences; cluster 3)
-  7. 'Name three things that challenged you today.' (1 occurrences; cluster 6)
-  8. 'Name three events that made you feel productive today.' (1 occurrences; cluster 3)
-  9. 'Name three urges that you resisted today.' (1 occurrences; cluster 3)
-  10. 'Name three thoughts that made you smile today.' (1 occurrences; cluster 3)
-  11. 'Name three things that you learned today.' (1 occurrences; cluster 6)
-  12. 'Name three experiences that made you feel brave today.' (1 occurrences; cluster 3)
-  13. 'Name three beautiful things that you heard today.' (1 occurrences; cluster 6)
-  14. 'Name three beautiful things that you saw today.' (1 occurrences; cluster 6)
-  15. 'What am I looking forward to today?' (1 occurrences; cluster 3)
-  16. 'What might challenge me today?' (1 occurrences; cluster 3)
-  17. 'What positive things happened today?' (1 occurrences; cluster 6)
-  18. 'What will I do if I feel anxious/stressed/worried today?' (1 occurrences; cluster 3)
-  19. 'What’s one thing you’re grateful for today?' (1 occurrences; cluster 3)
-  20. 'What do you need most right now?' (1 occurrences; cluster 2)
-  21. 'What am I grateful for today?' (1 occurrences; cluster 3)
-  22. 'What, if anything, went wrong today?' (1 occurrences; cluster 3)
-  23. 'What will I do differently tomorrow?' (1 occurrences; cluster 2)
-  24. 'What’s one moment from today (or yesterday) that made you smile?' (1 occurrences; cluster 3)
-  25. 'What’s one thing you want to carry into tomorrow?' (1 occurrences; cluster 2)
-  26. 'What’s one thing you can let go of today?' (1 occurrences; cluster 3)
-  27. 'How would you spend your perfect day off? What makes that perfect for you?' (1 occurrences; cluster 2)
-  28. 'Describe yourself in ten words. Why do those words come to mind?' (1 occurrences; cluster 2)
-  29. 'What is your favorite form of self-care? Why?' (1 occurrences; cluster 1)
-  30. 'What makes you feel the most inspired?' (1 occurrences; cluster 5)
+  1. 'What am I grateful for today?' (46 occurrences; cluster 3)
+  2. 'What does success mean to you?' (40 occurrences; cluster 4)
+  3. 'Write a letter to your future self.' (37 occurrences; cluster 1)
+  4. 'What are you grateful for today?' (25 occurrences; cluster 3)
+  5. 'What made you smile today?' (21 occurrences; cluster 3)
+  6. 'What makes you feel powerful?' (21 occurrences; cluster 6)
+  7. 'Write a love letter to yourself.' (20 occurrences; cluster 1)
+  8. 'What do I need to forgive myself for?' (16 occurrences; cluster 1)
+  9. 'What am I grateful for?' (16 occurrences; cluster 3)
+  10. 'What are three things you are grateful for today?' (16 occurrences; cluster 3)
+  11. 'What do you need to forgive yourself for?' (15 occurrences; cluster 1)
+  12. 'When do you feel most alive?' (14 occurrences; cluster 6)
+  13. 'What brings you joy?' (13 occurrences; cluster 1)
+  14. 'Describe your perfect day.' (13 occurrences; cluster 1)
+  15. 'What is your biggest fear?' (13 occurrences; cluster 1)
+  16. 'What makes you unique?' (13 occurrences; cluster 1)
+  17. 'What are you grateful for?' (12 occurrences; cluster 3)
+  18. 'What made me smile today?' (12 occurrences; cluster 3)
+  19. 'How am I feeling right now?' (12 occurrences; cluster 1)
+  20. 'What do you want to be remembered for?' (12 occurrences; cluster 1)
+  21. 'What does happiness mean to you?' (12 occurrences; cluster 4)
+  22. 'What does your dream life look like?' (12 occurrences; cluster 4)
+  23. 'Write about a time when you felt proud of yourself.' (12 occurrences; cluster 1)
+  24. 'What are three things you’re grateful for today?' (11 occurrences; cluster 3)
+  25. 'What do you love most about yourself?' (11 occurrences; cluster 1)
+  26. 'What does growing older mean to you?' (11 occurrences; cluster 4)
+  27. 'Finish this sentence: “My life would be incomplete without …”' (11 occurrences; cluster 2)
+  28. 'What would you do if you knew you could not fail?' (11 occurrences; cluster 1)
+  29. 'What do you need to let go of?' (11 occurrences; cluster 1)
+  30. 'What are you most proud of?' (11 occurrences; cluster 1)
 
 SECTION 4 – WHEN DO PROMPTS PLACE US IN TIME?
-8. 1.0% of prompts contain an explicit time frame.
-9. Most common: last year (100.0%)
+8. 3.8% of prompts contain an explicit time frame.
+9. Most common: this week (30.9%)
+   Runners-up: this year (29.5%), this month (10.4%)
 
 SECTION 5 – WHAT NUMBERS SHOW UP THE MOST?
-  • 10 (things): 1 occurrences
-  • 10 (years): 1 occurrences
+  • 3 (things): 304 occurrences
+  • 5 (things): 210 occurrences
+  • 5 (years): 143 occurrences
+  • 10 (things): 114 occurrences
+  • 10 (years): 100 occurrences
+  • 10 (words): 48 occurrences
+  • 3 (ways): 34 occurrences
+  • 3 (of): 29 occurrences
+  • 24 (hours): 27 occurrences
+  • 6 (months): 26 occurrences
+  • 5 (people): 24 occurrences
+  • 3 (goals): 23 occurrences
+  • 1 (thing): 23 occurrences
+  • 1 (year): 21 occurrences
+  • 10 (minutes): 20 occurrences
+  • 3 (people): 20 occurrences
+  • 3 (biggest): 20 occurrences
+  • 12 (months): 19 occurrences
+  • 3 (priorities): 16 occurrences
+  • 5 (minutes): 15 occurrences
+  • 5 (ways): 14 occurrences
+  • 2 (things): 14 occurrences
+  • 5 (or): 14 occurrences
+  • 3 (positive): 14 occurrences
+  • 3 (years): 12 occurrences
+  • 5 (positive): 12 occurrences
+  • 15 (things): 12 occurrences
+  • 30 (years): 11 occurrences
+  • 3 (words): 11 occurrences
+  • 5 (most): 11 occurrences
+  • 15 (minutes): 11 occurrences
+  • 7 (things): 11 occurrences
+  • 20 (years): 10 occurrences
+  • 10 (positive): 10 occurrences
+  • 3 (good): 9 occurrences
+  • 1 (to): 9 occurrences
+  • 5 (words): 8 occurrences
+  • 10 (everyday): 8 occurrences
+  • 3 (activities): 8 occurrences
+  • 15 (years): 8 occurrences
+  • 10 (ways): 8 occurrences
+  • 3 (small): 8 occurrences
+  • 1 (month): 7 occurrences
+  • 3 (lessons): 7 occurrences
+  • 5 (qualities): 7 occurrences
+  • 4 (things): 6 occurrences
+  • 20 (things): 6 occurrences
+  • 1 (Peter): 6 occurrences
+  • 1 (million): 6 occurrences
+  • 10 (most): 6 occurrences
+  • 2024 (with): 6 occurrences
+  • 10 (being): 6 occurrences
+  • 3 (most): 5 occurrences
+  • 5 (goals): 5 occurrences
+  • 3 (months): 5 occurrences
+  • 80 (years): 5 occurrences
+  • 100 (years): 5 occurrences
+  • 3 (values): 5 occurrences
+  • 3 (reasons): 5 occurrences
+  • 10 (affirmations): 5 occurrences
+  • 5 (traits): 5 occurrences
+  • 750 (characters): 5 occurrences
+  • 5 (senses): 4 occurrences
+  • 5 (values): 4 occurrences
+  • 3 (long): 4 occurrences
+  • 50 (years): 4 occurrences
+  • 3 (qualities): 4 occurrences
+  • 30 (days): 4 occurrences
+  • 5 (favorite): 4 occurrences
+  • 5 (best): 4 occurrences
+  • 3 (best): 4 occurrences
+  • 3 (strengths): 4 occurrences
+  • 3 (main): 4 occurrences
+  • 6 (things): 4 occurrences
+  • 1 (being): 4 occurrences
+  • 10 (thoughts): 4 occurrences
+  • 5 (reasons): 4 occurrences
+  • 3 (great): 4 occurrences
+  • 5 (of): 4 occurrences
+  • 10 (items): 4 occurrences
+  • 3 (Things): 4 occurrences
+  • 3 (self): 4 occurrences
+  • 2024 (in): 4 occurrences
+  • 3 (specific): 4 occurrences
+  • 5 (important): 4 occurrences
+  • 3 (favorite): 3 occurrences
+  • 3 (different): 3 occurrences
+  • 3 (wishes): 3 occurrences
+  • 5 (lessons): 3 occurrences
+  • 50 (things): 3 occurrences
+  • 5 (times): 3 occurrences
+  • 5 (year): 3 occurrences
+  • 3 (habits): 3 occurrences
+  • 3 (emotions): 3 occurrences
+  • 3 (fears): 3 occurrences
+  • 5 (songs): 3 occurrences
+  • 10 (Things): 3 occurrences
+  • 5 (activities): 3 occurrences
+  • 5 (good): 3 occurrences
+  • 3 (amazing): 3 occurrences
+  • 3 (times): 3 occurrences
+  • 10 (good): 3 occurrences
+  • 5 (tools): 3 occurrences
+  • 19 (pandemic): 3 occurrences
+  • 3 (affirmations): 3 occurrences
+  • 1 (John): 3 occurrences
+  • 3 (moments): 3 occurrences
+  • 3 (talents): 3 occurrences
+  • 10 (qualities): 3 occurrences
+  • 5 (favourite): 3 occurrences
+  • 5 (different): 3 occurrences
+  • 3 (big): 3 occurrences
+  • 10 (amazing): 3 occurrences
+  • 3 (minutes): 3 occurrences
+  • 3 (new): 2 occurrences
+  • 10 (times): 2 occurrences
+  • 25 (things): 2 occurrences
+  • 30 (seconds): 2 occurrences
+  • 10 (million): 2 occurrences
+  • 1 (person): 2 occurrences
+  • 6 (to): 2 occurrences
+  • 5 (strengths): 2 occurrences
+  • 3 (passions): 2 occurrences
+  • 3 (or): 2 occurrences
+  • 10 (normal): 2 occurrences
+  • 2 (memories): 2 occurrences
+  • 4 (little): 2 occurrences
+  • 3 (hobbies): 2 occurrences
+  • 2023 (that): 2 occurrences
+  • 1 (small): 2 occurrences
+  • 10 (favorite): 2 occurrences
+  • 10 (or): 2 occurrences
+  • 20 (days): 2 occurrences
+  • 3 (rules): 2 occurrences
+  • 5 (great): 2 occurrences
+  • 5 (deep): 2 occurrences
+  • 3 (examples): 2 occurrences
+  • 3 (deep): 2 occurrences
+  • 2 (Timothy): 2 occurrences
+  • 2 (ways): 2 occurrences
+  • 3 (areas): 2 occurrences
+  • 5 (negative): 2 occurrences
+  • 2 (columns): 2 occurrences
+  • 5 (more): 2 occurrences
+  • 1 (of): 2 occurrences
+  • 15 (compliments): 2 occurrences
+  • 4 (years): 2 occurrences
+  • 5 (steps): 2 occurrences
+  • 5 (aspects): 2 occurrences
+  • 5 (Life): 2 occurrences
+  • 100 (words): 2 occurrences
+  • 3 (accomplishments): 2 occurrences
+  • 5 (hobbies): 2 occurrences
+  • 3 (foods): 2 occurrences
+  • 3 (compliments): 2 occurrences
+  • 10 (skills): 2 occurrences
+  • 3 (personality): 2 occurrences
+  • 5 (to): 2 occurrences
+  • 10 (people): 2 occurrences
+  • 3 (traits): 2 occurrences
+  • 3 (stereotypes): 2 occurrences
+  • 2 (struggles): 2 occurrences
+  • 7 (and): 2 occurrences
+  • 3 (blessings): 2 occurrences
+  • 5 (affirmations): 2 occurrences
+  • 3 (bad): 2 occurrences
+  • 10 (activities): 2 occurrences
+  • 3 (changes): 2 occurrences
+  • 5 (characteristics): 2 occurrences
+  • 5 (habits): 2 occurrences
+  • 5 (minute): 2 occurrences
+  • 3 (daily): 2 occurrences
+  • 3 (top): 2 occurrences
+  • 3 (non): 2 occurrences
+  • 10 (year): 2 occurrences
+  • 3 (negative): 2 occurrences
+  • 3 (personal): 2 occurrences
+  • 5 (small): 2 occurrences
+  • 1 (goal): 2 occurrences
+  • 3 (dream): 2 occurrences
+  • 5 (little): 2 occurrences
+  • 3 (unhealthy): 2 occurrences
+  • 10 (sentences): 2 occurrences
+  • 3 (unique): 2 occurrences
+  • 3 (essential): 2 occurrences
+  • 3 (TOP): 2 occurrences
+  • 10 (is): 2 occurrences
+  • 365 (days): 2 occurrences
+  • 3 (objectives): 2 occurrences
+  • 90 (days): 2 occurrences
+  • 5 (core): 2 occurrences
+  • 30 (minutes): 2 occurrences
+  • 2025 (and): 2 occurrences
+  • 10 (simple): 2 occurrences
+  • 250 (words): 2 occurrences
+  • 500 (words): 2 occurrences
+  • 1500 (characters): 2 occurrences
+  • 000 (to): 2 occurrences
+  • 200 (words): 2 occurrences
+  • 30 (words): 1 occurrences
+  • 5 (adjectives): 1 occurrences
+  • 1 (program): 1 occurrences
+  • 3 (core): 1 occurrences
+  • 2025 (to): 1 occurrences
+  • 5 (specific): 1 occurrences
+  • 10 (questions): 1 occurrences
+  • 3 (a): 1 occurrences
+  • 3 (beautiful): 1 occurrences
+  • 5 (accomplishments): 1 occurrences
+  • 10 (unique): 1 occurrences
+  • 1 (per): 1 occurrences
+  • 3 (memories): 1 occurrences
+  • 3 (thoughts): 1 occurrences
+  • 3 (affirming): 1 occurrences
+  • 5 (books): 1 occurrences
+  • 7 (says): 1 occurrences
+  • 3 (statements): 1 occurrences
+  • 2024 (experience): 1 occurrences
+  • 2025 (feel): 1 occurrences
+  • 5 (wins): 1 occurrences
+  • 3 (counterintuitive): 1 occurrences
+  • 7 (year): 1 occurrences
+  • 000 (magically): 1 occurrences
+  • 3 (fictional): 1 occurrences
+  • 10 (bucket): 1 occurrences
+  • 10 (priorities): 1 occurrences
+  • 5 (sentences): 1 occurrences
+  • 5 (unassailable): 1 occurrences
+  • 50 (and): 1 occurrences
+  • 2019 (are): 1 occurrences
+  • 2019 (were): 1 occurrences
+  • 1 (way): 1 occurrences
+  • 1 (self): 1 occurrences
+  • 2 (people): 1 occurrences
+  • 5 (blessings): 1 occurrences
+  • 4 (different): 1 occurrences
+  • 3 (sounds): 1 occurrences
+  • 2 (natural): 1 occurrences
+  • 2 (ordinary): 1 occurrences
+  • 5 (Things): 1 occurrences
+  • 30 (things): 1 occurrences
+  • 10 (compliments): 1 occurrences
+  • 2 (years): 1 occurrences
+  • 20 (ways): 1 occurrences
+  • 1 (priority): 1 occurrences
+  • 3 (skills): 1 occurrences
+  • 10 (deep): 1 occurrences
+  • 5 (comfort): 1 occurrences
+  • 3 (quotes): 1 occurrences
+  • 10 (if): 1 occurrences
+  • 2025 (is): 1 occurrences
+  • 10 (what): 1 occurrences
+  • 3 (songs): 1 occurrences
+  • 5 (action): 1 occurrences
+  • 40 (days): 1 occurrences
+  • 60 (days): 1 occurrences
+  • 15 (songs): 1 occurrences
+  • 5 (is): 1 occurrences
+  • 3 (coping): 1 occurrences
+  • 1 (strength): 1 occurrences
+  • 10 (detailed): 1 occurrences
+  • 2 (amazing): 1 occurrences
+  • 24 (months): 1 occurrences
+  • 2 (healthy): 1 occurrences
+  • 5 (occasions): 1 occurrences
+  • 3 (details): 1 occurrences
+  • 9 (times): 1 occurrences
+  • 7 (people): 1 occurrences
+  • 7 (amazing): 1 occurrences
+  • 7 (experiences): 1 occurrences
+  • 7 (foods): 1 occurrences
+  • 7 (freedoms): 1 occurrences
+  • 3 (techniques): 1 occurrences
+  • 10 (and): 1 occurrences
+  • 10 (my): 1 occurrences
+  • 1 (that): 1 occurrences
+  • 28 (states): 1 occurrences
+  • 10 (in): 1 occurrences
+  • 3 (units): 1 occurrences
+  • 7 (units): 1 occurrences
+  • 14 (days): 1 occurrences
+  • 1 (trauma): 1 occurrences
+  • 5 (basic): 1 occurrences
+  • 3 (facilities): 1 occurrences
+  • 2020 (what): 1 occurrences
+  • 2020 (and): 1 occurrences
+  • 2021 (free): 1 occurrences
+  • 5 (coping): 1 occurrences
+  • 15 (year): 1 occurrences
+  • 3 (boundaries): 1 occurrences
+  • 3 (tasks): 1 occurrences
+  • 30 (min): 1 occurrences
+  • 10 (to): 1 occurrences
+  • 8 (hours): 1 occurrences
+  • 5 (and): 1 occurrences
+  • 5 (entry): 1 occurrences
+  • 25 (year): 1 occurrences
+  • 5 (made): 1 occurrences
+  • 5 (improvements): 1 occurrences
+  • 6 (values): 1 occurrences
+  • 1 (desire): 1 occurrences
+  • 3 (actions): 1 occurrences
+  • 5 (questions): 1 occurrences
+  • 1 (Corinthians): 1 occurrences
+  • 3 (challenging): 1 occurrences
+  • 1 (quality): 1 occurrences
+  • 3 (character): 1 occurrences
+  • 5 (unexpected): 1 occurrences
+  • 3 (friends): 1 occurrences
+  • 5 (hours): 1 occurrences
+  • 1 (Thessalonians): 1 occurrences
+  • 18 (and): 1 occurrences
+  • 3 (and): 1 occurrences
+  • 1 (Chronicles): 1 occurrences
+  • 16 (and): 1 occurrences
+  • 3 (opportunities): 1 occurrences
+  • 3 (slow): 1 occurrences
+  • 1 (trip): 1 occurrences
+  • 20 (places): 1 occurrences
+  • 48 (hours): 1 occurrences
+  • 5 (instances): 1 occurrences
+  • 3 (acts): 1 occurrences
+  • 10 (major): 1 occurrences
+  • 100 (things): 1 occurrences
+  • 5 (simple): 1 occurrences
+  • 3 (items): 1 occurrences
+  • 5 (that): 1 occurrences
+  • 2025 (Write): 1 occurrences
+  • 5 (practical): 1 occurrences
+  • 3 (practical): 1 occurrences
+  • 8 (values): 1 occurrences
+  • 5 (intentional): 1 occurrences
+  • 90 (and): 1 occurrences
+  • 60 (years): 1 occurrences
+  • 2 (short): 1 occurrences
+  • 2 (long): 1 occurrences
+  • 10 (lessons): 1 occurrences
+  • 2 (minutes): 1 occurrences
+  • 21 (starting): 1 occurrences
+  • 7 (most): 1 occurrences
+  • 7 (days): 1 occurrences
+  • 1 (or): 1 occurrences
+  • 2 (recurring): 1 occurrences
+  • 18 (months): 1 occurrences
+  • 7 (areas): 1 occurrences
+  • 3 (smaller): 1 occurrences
+  • 5 (bad): 1 occurrences
+  • 10 (tiny): 1 occurrences
+  • 5 (other): 1 occurrences
+  • 8 (years): 1 occurrences
+  • 5 (victories): 1 occurrences
+  • 3 (close): 1 occurrences
+  • 1 (big): 1 occurrences
+  • 3 (feel): 1 occurrences
+  • 10 (experiences): 1 occurrences
+  • 5 (unique): 1 occurrences
+  • 3 (favourite): 1 occurrences
+  • 13 (year): 1 occurrences
+  • 5 (governing): 1 occurrences
+  • 20 (year): 1 occurrences
+  • 5 (lines): 1 occurrences
+  • 3 (parts): 1 occurrences
+  • 5 (flaws): 1 occurrences
+  • 3 (Ways): 1 occurrences
+  • 6 (affirmations): 1 occurrences
+  • 5 (consequences): 1 occurrences
+  • 3 (possible): 1 occurrences
+  • 3 (life): 1 occurrences
+  • 3 (challenges): 1 occurrences
+  • 3 (imperfections): 1 occurrences
+  • 3 (photos): 1 occurrences
+  • 3 (inner): 1 occurrences
+  • 3 (obstacles): 1 occurrences
+  • 2 (possible): 1 occurrences
+  • 3 (questions): 1 occurrences
+  • 7 (AM): 1 occurrences
+  • 10 (obvious): 1 occurrences
+  • 3 (days): 1 occurrences
+  • 1 (word): 1 occurrences
+  • 1 (years): 1 occurrences
+  • 8 (graduation): 1 occurrences
+  • 3 (Strengths): 1 occurrences
+  • 10 (short): 1 occurrences
+  • 20 (long): 1 occurrences
+  • 1 (most): 1 occurrences
+  • 3 (lines): 1 occurrences
+  • 3 (pieces): 1 occurrences
+  • 15 (words): 1 occurrences
+  • 2 (hours): 1 occurrences
+  • 3 (limiting): 1 occurrences
+  • 3 (fearless): 1 occurrences
+  • 3 (little): 1 occurrences
+  • 2025 (were): 1 occurrences
+  • 2025 (with): 1 occurrences
+  • 85 (years): 1 occurrences
+  • 1000 (very): 1 occurrences
+  • 3 (business): 1 occurrences
+  • 000 (and): 1 occurrences
+  • 5 (compliments): 1 occurrences
+  • 6 (words): 1 occurrences
+  • 2 (experiences): 1 occurrences
+  • 3 (crucial): 1 occurrences
+  • 3 (relationship): 1 occurrences
+  • 4 (ways): 1 occurrences
+  • 20 (words): 1 occurrences
+  • 2 (words): 1 occurrences
+  • 21 (days): 1 occurrences
+  • 3 (more): 1 occurrences
+  • 3 (steps): 1 occurrences
+  • 40 (years): 1 occurrences
+  • 1 (bad): 1 occurrences
+  • 1 (memory): 1 occurrences
+  • 1 (action): 1 occurrences
+  • 3 (highlights): 1 occurrences
+  • 0 (consequences): 1 occurrences
+  • 10 (best): 1 occurrences
+  • 25 (years): 1 occurrences
+  • 3 (physical): 1 occurrences
+  • 3 (short): 1 occurrences
+  • 10 (Life): 1 occurrences
+  • 5 (art): 1 occurrences
+  • 2 (and): 1 occurrences
+  • 10 (tasks): 1 occurrences
+  • 5 (items): 1 occurrences
+  • 10 (reasons): 1 occurrences
+  • 3 (attainable): 1 occurrences
+  • 10 (moments): 1 occurrences
+  • 10 (acts): 1 occurrences
+  • 10 (promises): 1 occurrences
+  • 2021 (are): 1 occurrences
+  • 2023 (self): 1 occurrences
+  • 3 (achievements): 1 occurrences
+  • 5 (highlights): 1 occurrences
+  • 2 (sentences): 1 occurrences
+  • 2 (quarters): 1 occurrences
+  • 10 (accomplishments): 1 occurrences
+  • 12 (year): 1 occurrences
+  • 2024 (and): 1 occurrences
+  • 5 (childhood): 1 occurrences
+  • 3 (crowning): 1 occurrences
+  • 2024 (self): 1 occurrences
+  • 180 (this): 1 occurrences
+  • 2025 (when): 1 occurrences
+  • 12 (books): 1 occurrences
+  • 200 (characters): 1 occurrences
+  • 100 (but): 1 occurrences
+  • 10 (book): 1 occurrences
+  • 3 (greatest): 1 occurrences
+  • 000 (dollars): 1 occurrences
+  • 16 (to): 1 occurrences
+  • 20 (billion): 1 occurrences
+  • 70 (or): 1 occurrences
+  • 3 (places): 1 occurrences
+  • 5 (animals): 1 occurrences
+  • 10 (different): 1 occurrences
+  • 8 (of): 1 occurrences
+  • 50 (words): 1 occurrences
+  • 000 (words): 1 occurrences
+  • 10 (challenges): 1 occurrences
+  • 40 (things): 1 occurrences
+  • 15 (simple): 1 occurrences
+  • 11 (or): 1 occurrences
+  • 333 (or): 1 occurrences
+  • 1 (full): 1 occurrences
+  • 5 (amazing): 1 occurrences
+  • 10 (frivolous): 1 occurrences
+  • 12 (life): 1 occurrences
+  • 5 (emotions): 1 occurrences
+  • 20 (most): 1 occurrences
+  • 3 (experiences): 1 occurrences
+  • 3 (dreams): 1 occurrences
 
 SECTION 6 – WHICH VERBS DRIVE THE ACTION?
-11. Most frequent verb: feel (29 occurrences)
+11. Most frequent verb: feel (7544 occurrences)
 12. Next four verbs:
-  • think (18 occurrences)
-  • make (14 occurrences)
-  • name (9 occurrences)
-  • do (8 occurrences)
+  • write (5969 occurrences)
+  • make (5515 occurrences)
+  • do (4619 occurrences)
+  • describe (3399 occurrences)

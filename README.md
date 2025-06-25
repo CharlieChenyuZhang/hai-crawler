@@ -1,5 +1,9 @@
 # llm-crawler
 
+# analysis report
+
+see `analysis_outputs/final_output.txt`
+
 # which file to analyze
 
 `filtered_enriched_prompts.csv` is the most up to date one. Alice asked 2 undergraduate students to manually go thorugh the `inferior_list.csv` to bring the journaling prompts back.

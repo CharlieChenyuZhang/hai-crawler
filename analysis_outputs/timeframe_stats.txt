@@ -1,4 +1,6 @@
-1.0% of prompts contain an explicit time frame.
+3.8% of prompts contain an explicit time frame.
 
 Top time frames:
-  last year: 100.0%
+  this week: 30.9%
+  this year: 29.5%
+  this month: 10.4%
