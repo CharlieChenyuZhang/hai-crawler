@@ -2,11 +2,11 @@ SECTION 1 – WHAT BIG THEMES SHAPE THE CORPUS?
 1. 6 clusters emerge.
 2. Cluster names, descriptions, and shares:
   • Cluster 1 (9.0%): 'Writing Letters to Younger Self' (keywords: write, self, thing)
-  • Cluster 2 (39.0%): 'Personal Reflection and Imagination' (keywords: life, thoughts, mind)
+  • Cluster 2 (39.0%): 'Personal Reflection and Mindfulness' (keywords: life, thoughts, mind)
   • Cluster 3 (16.0%): 'Daily Reflections and Gratitude' (keywords: today, feel, grateful)
-  • Cluster 4 (11.0%): 'Reflective Mindset and Self-Perception' (keywords: think, grateful, mind)
+  • Cluster 4 (11.0%): 'Reflective Mental Perception Analysis' (keywords: think, grateful, mind)
   • Cluster 5 (16.0%): 'Feelings and Personal Experiences' (keywords: feel, makes, things)
-  • Cluster 6 (9.0%): 'Daily Reflections and Observations' (keywords: things, today, write)
+  • Cluster 6 (9.0%): 'Daily Reflections on Experiences' (keywords: things, today, write)
 3. Representative prompts:
   • Cluster 1 examples: Write a letter to your younger self, talking about mental health. What would you want to tell them? / Write a letter to your younger self. What advice would you give him or her?
   • Cluster 2 examples: Who do you most admire? Why? / Close your eyes and imagine a peaceful, calm place. Where is that place?
@@ -60,7 +60,8 @@ SECTION 4 – WHEN DO PROMPTS PLACE US IN TIME?
 9. Most common: last year (100.0%)
 
 SECTION 5 – WHAT NUMBERS SHOW UP THE MOST?
-  • 10 (2 occurrences)
+  • 10 (things): 1 occurrences
+  • 10 (years): 1 occurrences
 
 SECTION 6 – WHICH VERBS DRIVE THE ACTION?
 11. Most frequent verb: feel (29 occurrences)

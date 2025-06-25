@@ -184,14 +184,15 @@ def run_timeframe_analysis(df, out_dir):
 # -----------------------------------------------------------------------------
 # 5. Number Mention Counting
 # -----------------------------------------------------------------------------
-def run_number_analysis(df, top_n, out_dir):
-    nums = re.findall(r'\b(\d+)\b', ' '.join(df['prompt']))
-    counts = Counter(nums).most_common(top_n)
+def run_number_analysis(df, out_dir):
+    # Regex to find a number followed by a word (optionally separated by whitespace)
+    pairs = re.findall(r'\b(\d+)\s+(\w+)', ' '.join(df['prompt']))
+    counts = Counter(pairs)
     with open(os.path.join(out_dir, "top_numbers.csv"), 'w') as f:
-        f.write("number,count\n")
-        for num, cnt in counts:
-            f.write(f"{num},{cnt}\n")
-    return counts
+        f.write("number,word,count\n")
+        for (num, word), cnt in counts.items():
+            f.write(f"{num},{word},{cnt}\n")
+    return list(counts.items())
 
 # -----------------------------------------------------------------------------
 # 6. Verb Frequency Analysis
@@ -254,7 +255,7 @@ def main():
     timeframe_perc, timeframe_top = run_timeframe_analysis(df, args.out)
 
     # 5. Numbers
-    number_counts = run_number_analysis(df, args.top_numbers, args.out)
+    number_counts = run_number_analysis(df, args.out)
 
     # 6. Verbs
     verb_counts = run_verb_analysis(df, args.top_verbs, args.out)
@@ -297,8 +298,8 @@ def main():
                     f"{runners[2][0]} ({runners[2][1]:.1f}%)\n")
 
         f.write("\nSECTION 5 – WHAT NUMBERS SHOW UP THE MOST?\n")
-        for num, cnt in number_counts:
-            f.write(f"  • {num} ({cnt} occurrences)\n")
+        for (num, word), cnt in number_counts:
+            f.write(f"  • {num} ({word}): {cnt} occurrences\n")
 
         f.write("\nSECTION 6 – WHICH VERBS DRIVE THE ACTION?\n")
         # Most frequent verb
