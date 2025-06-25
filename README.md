@@ -64,3 +64,7 @@ Then, run the following in your terminal.
 [2] run `python extract_meta_data.py` to get `enriched_prompts.csv` with metadata (e.g. name of the author)
 
 [3] run `python quality_check.py` to get `filtered_prompts.csv` and `inferior_list.csv` (this is the list of prompts that did not pass the quality check)
+
+# lesson learned
+
+when extracting the date information, it's better to add it in the prompt to follow the ISO format "YYYY-MM-DD"

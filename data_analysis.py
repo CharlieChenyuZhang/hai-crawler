@@ -285,9 +285,8 @@ def main():
 
         f.write("\nSECTION 3 – WHICH PROMPTS KEEP COMING BACK?\n")
         for rank, (p, cnt, cl) in enumerate(top_prompts_with_cluster, start=1):
-            if rank <= 10:
+            if rank <= 30:
                 f.write(f"  {rank}. '{p}' ({cnt} occurrences; cluster {cl})\n")
-        f.write("  (… and up to top 30 as desired …)\n")
 
         f.write("\nSECTION 4 – WHEN DO PROMPTS PLACE US IN TIME?\n")
         f.write(f"8. {timeframe_perc:.1f}% of prompts contain an explicit time frame.\n")
