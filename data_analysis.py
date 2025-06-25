@@ -22,11 +22,18 @@ from gensim import corpora, models
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-
+from dotenv import load_dotenv
 # spaCy for verb extraction
 import spacy
 
-import openai
+from openai import OpenAI
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY not found in environment. Please add it to your .env file.")
+
+# Initialize OpenAI client
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # -----------------------------------------------------------------------------
 # 0. Load data
@@ -50,7 +57,7 @@ def name_cluster(reps, top_terms):
         + ", ".join(top_terms)
         + "\n\nSuggest a 3–5 word descriptive theme name for this cluster."
     )
-    resp = openai.ChatCompletion.create(
+    resp = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role":"user","content":prompt}],
         temperature=0.0,
@@ -81,7 +88,7 @@ def run_clustering(df, n_clusters, out_dir):
         dists = np.linalg.norm(X - centroid, axis=1)
         reps[i] = df.loc[np.argsort(dists)[:2], 'prompt'].tolist()
 
-    # 3. Top terms per cluster → “name”
+    # 3. Top terms per cluster → "name"
     terms = vectorizer.get_feature_names_out()
     order = km.cluster_centers_.argsort()[:, ::-1]
     top_terms = {i: [terms[idx] for idx in order[i][:3]] for i in range(n_clusters)}
@@ -265,7 +272,7 @@ def main():
         f.write(f"1. {args.clusters} clusters emerge.\n")
         f.write("2. Cluster names, descriptions, and shares:\n")
         for i, pct in shares.items():
-            f.write(f"  • Cluster {i+1} ({pct:.1f}%): “{cluster_names[i]}” "
+            f.write(f"  • Cluster {i+1} ({pct:.1f}%): '{cluster_names[i]}' "
                     f"(keywords: {', '.join(top_terms[i])})\n")
         f.write("3. Representative prompts:\n")
         for i, examples in reps.items():
@@ -278,7 +285,7 @@ def main():
         f.write("\nSECTION 3 – WHICH PROMPTS KEEP COMING BACK?\n")
         for rank, (p, cnt, cl) in enumerate(top_prompts_with_cluster, start=1):
             if rank <= 10:
-                f.write(f"  {rank}. “{p}” ({cnt} occurrences; cluster {cl})\n")
+                f.write(f"  {rank}. '{p}' ({cnt} occurrences; cluster {cl})\n")
         f.write("  (… and up to top 30 as desired …)\n")
 
         f.write("\nSECTION 4 – WHEN DO PROMPTS PLACE US IN TIME?\n")

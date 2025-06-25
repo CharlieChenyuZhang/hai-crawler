@@ -14,7 +14,7 @@
 
 ### install spaCy + dependencies
 
-`conda install -c conda-forge spacy pandas scikit-learn gensim nltk -y`
+`conda install -c conda-forge openai python-dotenv spacy pandas scikit-learn gensim nltk -y`
 
 `python -m spacy download en_core_web_sm`
 
