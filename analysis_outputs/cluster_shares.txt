@@ -1,0 +1,7 @@
+Cluster shares (%):
+  Cluster 1: 9.0%
+  Cluster 2: 39.0%
+  Cluster 3: 16.0%
+  Cluster 4: 11.0%
+  Cluster 5: 16.0%
+  Cluster 6: 9.0%

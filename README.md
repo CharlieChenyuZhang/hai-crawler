@@ -18,6 +18,10 @@
 
 `python -m spacy download en_core_web_sm`
 
+or
+
+`python -m spacy download en_core_web_lg`
+
 ### how to run data_analysis.py
 
 `python data_analysis.py ./_filtered_enriched_prompts_subset.csv `

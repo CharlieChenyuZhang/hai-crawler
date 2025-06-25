@@ -36,7 +36,7 @@ def load_prompts(csv_path):
     return df.dropna(subset=['prompt']).reset_index(drop=True)
 
 # -----------------------------------------------------------------------------
-# 1. Thematic Clustering
+# 1. Thematic Clustering - K-Means clustering
 # -----------------------------------------------------------------------------
 def run_clustering(df, n_clusters, out_dir):
     vectorizer = TfidfVectorizer(max_df=0.8, min_df=5, stop_words='english')
