@@ -108,7 +108,7 @@ def run_clustering(df, n_clusters, out_dir):
     return shares, reps, top_terms, df
 
 # -----------------------------------------------------------------------------
-# 2. Topic Modeling
+# 2. Topic Modeling (LDA - Latent Dirichlet Allocation)
 # -----------------------------------------------------------------------------
 def run_topic_modeling(df, num_topics, num_words, out_dir):
     nltk.download('punkt')
@@ -128,6 +128,7 @@ def run_topic_modeling(df, num_topics, num_words, out_dir):
     )
 
     topics = {}
+    # print_topics returns the top num_words for each topic, sorted by the weights (importance) assigned by the model.
     for idx, topic in lda.print_topics(num_topics=num_topics,
                                        num_words=num_words):
         # parse into a clean list of keywords
