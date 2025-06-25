@@ -1,5 +1,23 @@
 # llm-crawler
 
+# which file to analyze
+
+`filtered_enriched_prompts.csv` is the most up to date one. Alice asked 2 undergraduate students to manually go thorugh the `inferior_list.csv` to bring the journaling prompts back.
+
+# how to run data_analysis.py
+
+### create a fresh environment
+
+`conda create -n hai-crawler python=3.10 -y`
+
+`conda activate hai-crawler`
+
+### install spaCy + dependencies
+
+`conda install -c conda-forge spacy pandas scikit-learn gensim nltk -y`
+
+`python -m spacy download en_core_web_sm`
+
 # what it does
 
 The code extracts mindfullness journal prompts on the internet. It can be re-purposed to extract any contents just simply change the search queries in the file `serp_firecrawl_prompt_extractor.py`
