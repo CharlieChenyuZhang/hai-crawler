@@ -1,0 +1,6 @@
+Topic 0: 0.088*"today" + 0.061*"feel" + 0.049*"name" + 0.049*"three" + 0.025*"things" + 0.025*"made" + 0.023*"think" + 0.017*"life"
+Topic 1: 0.031*"things" + 0.029*"today" + 0.027*"want" + 0.027*"think" + 0.015*"people" + 0.015*"mean" + 0.015*"future" + 0.015*"five"
+Topic 2: 0.049*"feel" + 0.037*"write" + 0.030*"would" + 0.030*"worry" + 0.023*"self" + 0.023*"letter" + 0.022*"things" + 0.019*"think"
+Topic 3: 0.043*"one" + 0.036*"would" + 0.035*"today" + 0.029*"life" + 0.029*"place" + 0.029*"thing" + 0.015*"change" + 0.015*"perfect"
+Topic 4: 0.044*"grateful" + 0.041*"think" + 0.038*"feel" + 0.027*"home" + 0.021*"live" + 0.019*"words" + 0.019*"describe" + 0.019*"mind"
+Topic 5: 0.049*"feel" + 0.033*"makes" + 0.017*"people" + 0.017*"thoughts" + 0.017*"like" + 0.017*"typically" + 0.017*"think" + 0.017*"outside"
