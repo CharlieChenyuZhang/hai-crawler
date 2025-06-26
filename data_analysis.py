@@ -68,9 +68,32 @@ def name_cluster(reps, top_terms):
 # -----------------------------------------------------------------------------
 # 1. Thematic Clustering - K-Means clustering
 # -----------------------------------------------------------------------------
-def run_clustering(df, n_clusters, out_dir):
+def determine_optimal_clusters(X, max_k=12):
+    """
+    Use the elbow method to determine the optimal number of clusters for KMeans.
+    Returns the optimal k.
+    """
+    from sklearn.cluster import KMeans
+    import matplotlib.pyplot as plt
+    inertias = []
+    K_range = range(2, max_k+1)
+    for k in K_range:
+        km = KMeans(n_clusters=k, random_state=42)
+        km.fit(X)
+        inertias.append(km.inertia_)
+    # Find the elbow point (where the decrease in inertia slows)
+    # We'll use the "knee" point: the point of maximum second derivative
+    deltas = np.diff(inertias)
+    second_deltas = np.diff(deltas)
+    if len(second_deltas) == 0:
+        return 2
+    elbow = np.argmin(second_deltas) + 2  # +2 because of diff offset and K_range starting at 2
+    return K_range[elbow]
+
+def run_clustering(df, out_dir, max_k=12):
     vectorizer = TfidfVectorizer(max_df=0.8, min_df=5, stop_words='english')
     X = vectorizer.fit_transform(df['prompt'])
+    n_clusters = determine_optimal_clusters(X, max_k=max_k)
     km = KMeans(n_clusters=n_clusters, random_state=42)
     labels = km.fit_predict(X)
     df['cluster'] = labels
@@ -84,7 +107,6 @@ def run_clustering(df, n_clusters, out_dir):
     reps = {}
     for i in range(n_clusters):
         centroid = km.cluster_centers_[i]
-        # compute distance from each doc vector to this centroid
         dists = np.linalg.norm(X - centroid, axis=1)
         reps[i] = df.loc[np.argsort(dists)[:2], 'prompt'].tolist()
 
@@ -105,7 +127,7 @@ def run_clustering(df, n_clusters, out_dir):
             f.write(f"  1) {reps[i][0]}\n")
             f.write(f"  2) {reps[i][1]}\n\n")
 
-    return shares, reps, top_terms, df
+    return shares, reps, top_terms, df, n_clusters
 
 # -----------------------------------------------------------------------------
 # 2. Topic Modeling (LDA - Latent Dirichlet Allocation)
@@ -218,8 +240,8 @@ def main():
     parser.add_argument("csv", help="Path to filtered_enriched_prompts_subset.csv")
     parser.add_argument("--out", default="analysis_outputs",
                         help="Output directory (will be created if needed)")
-    parser.add_argument("--clusters", type=int, default=6,
-                        help="Number of clusters")
+    parser.add_argument("--max_clusters", type=int, default=12,
+                        help="Maximum number of clusters to try for elbow method")
     parser.add_argument("--topics", type=int, default=6,
                         help="Number of LDA topics")
     parser.add_argument("--topic_words", type=int, default=8,
@@ -236,11 +258,11 @@ def main():
     df = load_prompts(args.csv)
 
     # 1. Clustering
-    shares, reps, top_terms, df = run_clustering(df, args.clusters, args.out)
+    shares, reps, top_terms, df, n_clusters = run_clustering(df, args.out, max_k=args.max_clusters)
 
     # ─── generate human‐readable names ──────────────────────────────────
     cluster_names = {}
-    for i in range(args.clusters):
+    for i in range(n_clusters):
         # reps[i] is list of two examples, top_terms[i] is list of 3 keywords
         name = name_cluster(reps[i], top_terms[i])
         cluster_names[i] = name
@@ -271,7 +293,7 @@ def main():
     final_path = os.path.join(args.out, "final_output.txt")
     with open(final_path, 'w') as f:
         f.write("SECTION 1 – WHAT BIG THEMES SHAPE THE CORPUS?\n")
-        f.write(f"1. {args.clusters} clusters emerge.\n")
+        f.write(f"1. {n_clusters} clusters emerge.\n")
         f.write("2. Cluster names, descriptions, and shares:\n")
         for i, pct in shares.items():
             f.write(f"  • Cluster {i+1} ({pct:.1f}%): '{cluster_names[i]}' "

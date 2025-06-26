@@ -1,19 +1,27 @@
 SECTION 1 – WHAT BIG THEMES SHAPE THE CORPUS?
-1. 6 clusters emerge.
+1. 10 clusters emerge.
 2. Cluster names, descriptions, and shares:
-  • Cluster 1 (67.4%): 'Personal Reflections and Beliefs' (keywords: write, time, did)
-  • Cluster 2 (8.9%): 'Self-Reflection and Personal Desires' (keywords: life, write, want)
-  • Cluster 3 (6.2%): 'Self-Reflection in Solitude' (keywords: today, grateful, did)
-  • Cluster 4 (5.0%): 'Personal Reflection Questions' (keywords: like, does, look)
-  • Cluster 5 (5.0%): 'Making Personal Improvement Lists' (keywords: things, list, make)
-  • Cluster 6 (7.5%): 'Personal Feelings and Self-Indulgence' (keywords: feel, makes, make)
+  • Cluster 1 (52.8%): 'Self-Love and Unique Abilities' (keywords: self, love, thing)
+  • Cluster 2 (12.4%): 'Personal Identity and Motivation' (keywords: feel, life, makes)
+  • Cluster 3 (3.6%): 'Personal Growth and Self-Reflection' (keywords: want, year, life)
+  • Cluster 4 (5.6%): 'Personal Reflection and Growth' (keywords: did, today, learn)
+  • Cluster 5 (0.7%): 'Personal Reflection and Improvement' (keywords: ideal, day, look)
+  • Cluster 6 (0.5%): 'Personal Reflection on Learning' (keywords: learning, regret, biggest)
+  • Cluster 7 (4.7%): 'Personal Identity Inquiry' (keywords: things, list, make)
+  • Cluster 8 (10.3%): 'Personal Reflection and Expression' (keywords: write, time, letter)
+  • Cluster 9 (4.3%): 'Personal Perception and Affection Queries' (keywords: like, look, does)
+  • Cluster 10 (5.1%): 'Personal Reflection and Self-Awareness' (keywords: today, grateful, thing)
 3. Representative prompts:
-  • Cluster 1 examples: Do you have any numbers you are superstitious about? / What you SHOULD NOT do, that you do. Why?
-  • Cluster 2 examples: How can you give yourself that now? / How would you describe yourself?
-  • Cluster 3 examples: Who am I when no one is around? / Who am I when I’m alone?
-  • Cluster 4 examples: What could I do less of? / What intimidates you?
-  • Cluster 5 examples: What can you do less of? What can you do more of? / How can I do more for others?
-  • Cluster 6 examples: How will you describe your soulmate? / How do you indulge yourself? How can you indulge yourself more often?
+  • Cluster 1 examples: How can you give yourself that now? / What can you do that no one else can?
+  • Cluster 2 examples: What’s your “why”? / Who are you now?
+  • Cluster 3 examples: How can I do more for others? / What’s a green flag about you?
+  • Cluster 4 examples: What is still lovely? / What can you do less of? What can you do more of?
+  • Cluster 5 examples: How would you describe your soulmate? / What can you do less of? What can you do more of?
+  • Cluster 6 examples: How do you see yourself in math? / What is your ‘why’?
+  • Cluster 7 examples: How would my peers describe me? / Who are you?
+  • Cluster 8 examples: I have never been more frightened than when... / How do you describe yourself?
+  • Cluster 9 examples: How would my peers describe me? / What do you adore the most about each other?
+  • Cluster 10 examples: Describe yourself as you see you. / What you SHOULD NOT do, that you do. Why?
 
 SECTION 2 – WHICH TOPICS SURFACE MOST OFTEN?
   • Topic 1: things, make, feel, today, life, list, three, grateful
@@ -24,32 +32,32 @@ SECTION 2 – WHICH TOPICS SURFACE MOST OFTEN?
   • Topic 6: would, could, one, write, want, thing, self, letter
 
 SECTION 3 – WHICH PROMPTS KEEP COMING BACK?
-  1. 'What am I grateful for today?' (46 occurrences; cluster 3)
-  2. 'What does success mean to you?' (40 occurrences; cluster 4)
-  3. 'Write a letter to your future self.' (37 occurrences; cluster 1)
-  4. 'What are you grateful for today?' (25 occurrences; cluster 3)
-  5. 'What made you smile today?' (21 occurrences; cluster 3)
-  6. 'What makes you feel powerful?' (21 occurrences; cluster 6)
-  7. 'Write a love letter to yourself.' (20 occurrences; cluster 1)
+  1. 'What am I grateful for today?' (46 occurrences; cluster 10)
+  2. 'What does success mean to you?' (40 occurrences; cluster 1)
+  3. 'Write a letter to your future self.' (37 occurrences; cluster 8)
+  4. 'What are you grateful for today?' (25 occurrences; cluster 10)
+  5. 'What made you smile today?' (21 occurrences; cluster 10)
+  6. 'What makes you feel powerful?' (21 occurrences; cluster 2)
+  7. 'Write a love letter to yourself.' (20 occurrences; cluster 8)
   8. 'What do I need to forgive myself for?' (16 occurrences; cluster 1)
-  9. 'What am I grateful for?' (16 occurrences; cluster 3)
-  10. 'What are three things you are grateful for today?' (16 occurrences; cluster 3)
+  9. 'What am I grateful for?' (16 occurrences; cluster 10)
+  10. 'What are three things you are grateful for today?' (16 occurrences; cluster 10)
   11. 'What do you need to forgive yourself for?' (15 occurrences; cluster 1)
-  12. 'When do you feel most alive?' (14 occurrences; cluster 6)
+  12. 'When do you feel most alive?' (14 occurrences; cluster 2)
   13. 'What brings you joy?' (13 occurrences; cluster 1)
   14. 'Describe your perfect day.' (13 occurrences; cluster 1)
   15. 'What is your biggest fear?' (13 occurrences; cluster 1)
   16. 'What makes you unique?' (13 occurrences; cluster 1)
-  17. 'What are you grateful for?' (12 occurrences; cluster 3)
-  18. 'What made me smile today?' (12 occurrences; cluster 3)
+  17. 'What are you grateful for?' (12 occurrences; cluster 10)
+  18. 'What made me smile today?' (12 occurrences; cluster 10)
   19. 'How am I feeling right now?' (12 occurrences; cluster 1)
-  20. 'What do you want to be remembered for?' (12 occurrences; cluster 1)
-  21. 'What does happiness mean to you?' (12 occurrences; cluster 4)
-  22. 'What does your dream life look like?' (12 occurrences; cluster 4)
-  23. 'Write about a time when you felt proud of yourself.' (12 occurrences; cluster 1)
-  24. 'What are three things you’re grateful for today?' (11 occurrences; cluster 3)
+  20. 'What do you want to be remembered for?' (12 occurrences; cluster 3)
+  21. 'What does happiness mean to you?' (12 occurrences; cluster 1)
+  22. 'What does your dream life look like?' (12 occurrences; cluster 9)
+  23. 'Write about a time when you felt proud of yourself.' (12 occurrences; cluster 8)
+  24. 'What are three things you’re grateful for today?' (11 occurrences; cluster 10)
   25. 'What do you love most about yourself?' (11 occurrences; cluster 1)
-  26. 'What does growing older mean to you?' (11 occurrences; cluster 4)
+  26. 'What does growing older mean to you?' (11 occurrences; cluster 1)
   27. 'Finish this sentence: “My life would be incomplete without …”' (11 occurrences; cluster 2)
   28. 'What would you do if you knew you could not fail?' (11 occurrences; cluster 1)
   29. 'What do you need to let go of?' (11 occurrences; cluster 1)

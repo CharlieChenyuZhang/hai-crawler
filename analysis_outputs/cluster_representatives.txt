@@ -1,24 +1,40 @@
 Cluster 1 examples:
-  1) Do you have any numbers you are superstitious about?
-  2) What you SHOULD NOT do, that you do. Why?
+  1) How can you give yourself that now?
+  2) What can you do that no one else can?
 
 Cluster 2 examples:
-  1) How can you give yourself that now?
-  2) How would you describe yourself?
+  1) What’s your “why”?
+  2) Who are you now?
 
 Cluster 3 examples:
-  1) Who am I when no one is around?
-  2) Who am I when I’m alone?
+  1) How can I do more for others?
+  2) What’s a green flag about you?
 
 Cluster 4 examples:
-  1) What could I do less of?
-  2) What intimidates you?
+  1) What is still lovely?
+  2) What can you do less of? What can you do more of?
 
 Cluster 5 examples:
-  1) What can you do less of? What can you do more of?
-  2) How can I do more for others?
+  1) How would you describe your soulmate?
+  2) What can you do less of? What can you do more of?
 
 Cluster 6 examples:
-  1) How will you describe your soulmate?
-  2) How do you indulge yourself? How can you indulge yourself more often?
+  1) How do you see yourself in math?
+  2) What is your ‘why’?
+
+Cluster 7 examples:
+  1) How would my peers describe me?
+  2) Who are you?
+
+Cluster 8 examples:
+  1) I have never been more frightened than when...
+  2) How do you describe yourself?
+
+Cluster 9 examples:
+  1) How would my peers describe me?
+  2) What do you adore the most about each other?
+
+Cluster 10 examples:
+  1) Describe yourself as you see you.
+  2) What you SHOULD NOT do, that you do. Why?
 

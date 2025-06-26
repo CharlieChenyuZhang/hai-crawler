@@ -1,0 +1,6 @@
+Cluster 1 top 10 terms: write, time, did, self, want, love, year, thing, favorite, day
+Cluster 2 top 10 terms: life, write, want, change, need, people, impact, daily, right, areas
+Cluster 3 top 10 terms: today, grateful, did, thing, things, smile, small, feel, care, happened
+Cluster 4 top 10 terms: like, does, look, mean, day, life, success, ideal, self, feel
+Cluster 5 top 10 terms: things, list, make, grateful, love, write, life, feel, right, 10
+Cluster 6 top 10 terms: feel, makes, make, did, does, right, body, time, write, like
