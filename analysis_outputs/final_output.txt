@@ -8,7 +8,7 @@ SECTION 1 – WHAT BIG THEMES SHAPE THE CORPUS?
   • Cluster 5 (0.7%): 'Personal Reflection and Improvement' (keywords: ideal, day, look)
   • Cluster 6 (0.5%): 'Personal Reflection on Learning' (keywords: learning, regret, biggest)
   • Cluster 7 (4.7%): 'Personal Identity Inquiry' (keywords: things, list, make)
-  • Cluster 8 (10.3%): 'Personal Reflection and Expression' (keywords: write, time, letter)
+  • Cluster 8 (10.3%): 'Personal Reflection and Expression Prompts' (keywords: write, time, letter)
   • Cluster 9 (4.3%): 'Personal Perception and Affection Queries' (keywords: like, look, does)
   • Cluster 10 (5.1%): 'Personal Reflection and Self-Awareness' (keywords: today, grateful, thing)
 3. Representative prompts:
@@ -543,8 +543,13 @@ SECTION 5 – WHAT NUMBERS SHOW UP THE MOST?
 
 SECTION 6 – WHICH VERBS DRIVE THE ACTION?
 11. Most frequent verb: feel (7544 occurrences)
-12. Next four verbs:
+12. Next ninefour verbs:
   • write (5969 occurrences)
   • make (5515 occurrences)
   • do (4619 occurrences)
   • describe (3399 occurrences)
+  • have (3224 occurrences)
+  • want (2543 occurrences)
+  • reflect (2065 occurrences)
+  • think (2021 occurrences)
+  • take (1824 occurrences)

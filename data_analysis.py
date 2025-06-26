@@ -250,7 +250,7 @@ def main():
                         help="How many top prompts")
     parser.add_argument("--top_numbers", type=int, default=10,
                         help="How many top numbers")
-    parser.add_argument("--top_verbs", type=int, default=5,
+    parser.add_argument("--top_verbs", type=int, default=10,
                         help="How many top verbs")
     args = parser.parse_args()
 
@@ -326,8 +326,8 @@ def main():
         f.write("\nSECTION 6 – WHICH VERBS DRIVE THE ACTION?\n")
         # Most frequent verb
         f.write(f"11. Most frequent verb: {verb_counts[0][0]} ({verb_counts[0][1]} occurrences)\n")
-        f.write("12. Next four verbs:\n")
-        for v, c in verb_counts[1:5]:
+        f.write("12. Next ninefour verbs:\n")
+        for v, c in verb_counts[1:10]:
             f.write(f"  • {v} ({c} occurrences)\n")
 
     print(f"✅ All analyses complete. Final report → {final_path}")
