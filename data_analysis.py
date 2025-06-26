@@ -113,7 +113,7 @@ def run_clustering(df, out_dir, max_k=12):
     # 3. Top terms per cluster → "name"
     terms = vectorizer.get_feature_names_out()
     order = km.cluster_centers_.argsort()[:, ::-1]
-    top_terms = {i: [terms[idx] for idx in order[i][:3]] for i in range(n_clusters)}
+    top_terms = {i: [terms[idx] for idx in order[i][:10]] for i in range(n_clusters)}
 
     # write the existing files too
     df.to_csv(os.path.join(out_dir, "prompts_with_clusters.csv"), index=False)
@@ -321,11 +321,11 @@ def main():
     # 6. Verbs
     verb_counts = run_verb_analysis(df, args.top_verbs, args.out)
 
-    # 7. Followers of top verbs
+    # 7. Followers of top verbs # NOTE: this is a bit time consuming to run so commented out for now.
     # extract just the lemma strings of the top 10 verbs
-    top_verb_list = [v for v,_ in verb_counts[:args.top_verbs]]
-    followers_by_verb = run_follower_analysis_by_verb(
-        df, top_verb_list, args.top_followers, args.out)
+    # top_verb_list = [v for v,_ in verb_counts[:args.top_verbs]]
+    # followers_by_verb = run_follower_analysis_by_verb(
+    #     df, top_verb_list, args.top_followers, args.out)
 
     # Map each of the top prompts back to its cluster
     prompt_to_cluster = {row['prompt']: row['cluster']+1 for _, row in df.iterrows()}
@@ -375,11 +375,11 @@ def main():
         for v, c in verb_counts[1:10]:
             f.write(f"  • {v} ({c} occurrences)\n")
 
-        f.write("\nSECTION 7 – WHICH WORDS FOLLOW THE TOP VERBS?\n")
-        for verb, followers in followers_by_verb.items():
-            f.write(f"\n  {verb}:\n")
-            for follower, cnt in followers:
-                f.write(f"    • {follower}: {cnt} occurrences\n")
+        # f.write("\nSECTION 7 – WHICH WORDS FOLLOW THE TOP VERBS?\n")
+        # for verb, followers in followers_by_verb.items():
+        #     f.write(f"\n  {verb}:\n")
+        #     for follower, cnt in followers:
+        #         f.write(f"    • {follower}: {cnt} occurrences\n")
 
     print(f"✅ All analyses complete. Final report → {final_path}")
 

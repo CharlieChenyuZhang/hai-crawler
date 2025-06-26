@@ -1,16 +1,16 @@
 SECTION 1 – WHAT BIG THEMES SHAPE THE CORPUS?
 1. 10 clusters emerge.
 2. Cluster names, descriptions, and shares:
-  • Cluster 1 (52.8%): 'Self-Love and Unique Abilities' (keywords: self, love, thing)
-  • Cluster 2 (12.4%): 'Personal Identity and Purpose Exploration' (keywords: feel, life, makes)
-  • Cluster 3 (3.6%): 'Personal Growth and Self-Reflection' (keywords: want, year, life)
-  • Cluster 4 (5.6%): 'Personal Reflection and Growth' (keywords: did, today, learn)
-  • Cluster 5 (0.7%): 'Personal Reflection and Improvement' (keywords: ideal, day, look)
-  • Cluster 6 (0.5%): 'Personal Reflection on Learning' (keywords: learning, regret, biggest)
-  • Cluster 7 (4.7%): 'Personal Identity Inquiry' (keywords: things, list, make)
-  • Cluster 8 (10.3%): 'Personal Reflection and Expression Prompts' (keywords: write, time, letter)
-  • Cluster 9 (4.3%): 'Personal Perception and Relationships' (keywords: like, look, does)
-  • Cluster 10 (5.1%): 'Personal Reflection and Self-Awareness' (keywords: today, grateful, thing)
+  • Cluster 1 (52.8%): 'Self-Reflection and Individuality' (keywords: self, love, thing, favorite, does, need, year, right, day, ve)
+  • Cluster 2 (12.4%): 'Personal Identity and Purpose' (keywords: feel, life, makes, make, right, does, need, people, body, daily)
+  • Cluster 3 (3.6%): 'Personal Growth and Self-Reflection' (keywords: want, year, life, achieve, accomplish, feel, remembered, thing, years, today)
+  • Cluster 4 (5.6%): 'Reflective Personal Growth Queries' (keywords: did, today, learn, time, feel, make, experience, year, reflect, think)
+  • Cluster 5 (0.7%): 'Self Reflection and Ideal Future' (keywords: ideal, day, look, like, does, self, life, morning, routine, future)
+  • Cluster 6 (0.5%): 'Personal Growth and Learning Reflection' (keywords: learning, regret, biggest, learn, doing, life, did, growth, opportunities, choice)
+  • Cluster 7 (4.7%): 'Self-Reflection and Identity Inquiry' (keywords: things, list, make, grateful, love, life, write, right, feel, 10)
+  • Cluster 8 (10.3%): 'Personal Reflection and Experience' (keywords: write, time, letter, felt, self, life, future, love, ve, reflect)
+  • Cluster 9 (4.3%): 'Personal Perception and Relationships' (keywords: like, look, does, feel, life, day, change, perfect, year, self)
+  • Cluster 10 (5.1%): 'Personal Reflection and Emotions' (keywords: today, grateful, thing, things, smile, small, happened, moment, care, feel)
 3. Representative prompts:
   • Cluster 1 examples: How can you give yourself that now? / What can you do that no one else can?
   • Cluster 2 examples: What’s your “why”? / Who are you now?
@@ -675,3 +675,4 @@ SECTION 7 – WHICH WORDS FOLLOW THE TOP VERBS?
     • this: 31 occurrences
     • ?: 30 occurrences
     • the: 30 occurrences
+
