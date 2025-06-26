@@ -2,14 +2,14 @@ SECTION 1 – WHAT BIG THEMES SHAPE THE CORPUS?
 1. 10 clusters emerge.
 2. Cluster names, descriptions, and shares:
   • Cluster 1 (52.8%): 'Self-Love and Unique Abilities' (keywords: self, love, thing)
-  • Cluster 2 (12.4%): 'Personal Identity and Motivation' (keywords: feel, life, makes)
+  • Cluster 2 (12.4%): 'Personal Identity and Purpose Exploration' (keywords: feel, life, makes)
   • Cluster 3 (3.6%): 'Personal Growth and Self-Reflection' (keywords: want, year, life)
   • Cluster 4 (5.6%): 'Personal Reflection and Growth' (keywords: did, today, learn)
   • Cluster 5 (0.7%): 'Personal Reflection and Improvement' (keywords: ideal, day, look)
   • Cluster 6 (0.5%): 'Personal Reflection on Learning' (keywords: learning, regret, biggest)
   • Cluster 7 (4.7%): 'Personal Identity Inquiry' (keywords: things, list, make)
   • Cluster 8 (10.3%): 'Personal Reflection and Expression Prompts' (keywords: write, time, letter)
-  • Cluster 9 (4.3%): 'Personal Perception and Affection Queries' (keywords: like, look, does)
+  • Cluster 9 (4.3%): 'Personal Perception and Relationships' (keywords: like, look, does)
   • Cluster 10 (5.1%): 'Personal Reflection and Self-Awareness' (keywords: today, grateful, thing)
 3. Representative prompts:
   • Cluster 1 examples: How can you give yourself that now? / What can you do that no one else can?
@@ -553,3 +553,125 @@ SECTION 6 – WHICH VERBS DRIVE THE ACTION?
   • reflect (2065 occurrences)
   • think (2021 occurrences)
   • take (1824 occurrences)
+
+SECTION 7 – WHICH WORDS FOLLOW THE TOP VERBS?
+
+  feel:
+    • ?: 654 occurrences
+    • like: 414 occurrences
+    • most: 413 occurrences
+    • the: 302 occurrences
+    • about: 297 occurrences
+    • when: 243 occurrences
+    • right: 213 occurrences
+    • truly: 157 occurrences
+    • anxious: 153 occurrences
+    • .: 151 occurrences
+
+  write:
+    • about: 3360 occurrences
+    • a: 1237 occurrences
+    • down: 662 occurrences
+    • out: 96 occurrences
+    • the: 56 occurrences
+    • them: 49 occurrences
+    • your: 43 occurrences
+    • three: 38 occurrences
+    • it: 36 occurrences
+    • an: 35 occurrences
+
+  make:
+    • you: 2330 occurrences
+    • me: 550 occurrences
+    • a: 543 occurrences
+    • it: 248 occurrences
+    • your: 191 occurrences
+    • to: 114 occurrences
+    • in: 88 occurrences
+    • my: 88 occurrences
+    • the: 86 occurrences
+    • this: 82 occurrences
+
+  do:
+    • to: 816 occurrences
+    • ?: 535 occurrences
+    • today: 378 occurrences
+    • for: 254 occurrences
+    • that: 167 occurrences
+    • this: 141 occurrences
+    • differently: 137 occurrences
+    • it: 130 occurrences
+    • in: 127 occurrences
+    • if: 125 occurrences
+
+  describe:
+    • a: 1264 occurrences
+    • your: 576 occurrences
+    • the: 346 occurrences
+    • how: 175 occurrences
+    • yourself: 146 occurrences
+    • what: 142 occurrences
+    • an: 98 occurrences
+    • it: 98 occurrences
+    • you: 70 occurrences
+    • one: 53 occurrences
+
+  have:
+    • a: 591 occurrences
+    • to: 376 occurrences
+    • ?: 227 occurrences
+    • that: 161 occurrences
+    • the: 145 occurrences
+    • any: 123 occurrences
+    • .: 110 occurrences
+    • in: 106 occurrences
+    • for: 90 occurrences
+    • on: 77 occurrences
+
+  want:
+    • to: 2092 occurrences
+    • your: 66 occurrences
+    • ?: 52 occurrences
+    • my: 27 occurrences
+    • in: 24 occurrences
+    • more: 23 occurrences
+    • people: 22 occurrences
+    • ,: 19 occurrences
+    • them: 19 occurrences
+    • the: 19 occurrences
+
+  reflect:
+    • on: 1930 occurrences
+    • your: 44 occurrences
+    • my: 9 occurrences
+    • back: 8 occurrences
+    • what: 7 occurrences
+    • in: 7 occurrences
+    • the: 6 occurrences
+    • these: 6 occurrences
+    • and: 5 occurrences
+    • ?: 4 occurrences
+
+  think:
+    • about: 703 occurrences
+    • of: 407 occurrences
+    • you: 153 occurrences
+    • it: 88 occurrences
+    • that: 60 occurrences
+    • this: 53 occurrences
+    • is: 49 occurrences
+    • your: 47 occurrences
+    • back: 39 occurrences
+    • i: 29 occurrences
+
+  take:
+    • to: 423 occurrences
+    • a: 250 occurrences
+    • care: 196 occurrences
+    • today: 97 occurrences
+    • for: 92 occurrences
+    • better: 54 occurrences
+    • time: 31 occurrences
+    • this: 31 occurrences
+    • ?: 30 occurrences
+    • the: 30 occurrences

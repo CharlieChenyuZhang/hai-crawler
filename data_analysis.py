@@ -232,11 +232,50 @@ def run_verb_analysis(df, top_n, out_dir):
     return counts
 
 # -----------------------------------------------------------------------------
+# 7. Follower Word Analysis (by verb)
+# -----------------------------------------------------------------------------
+def run_follower_analysis_by_verb(df, top_verbs, top_n, out_dir):
+    """
+    For each verb in top_verbs, find the top_n words that
+    immediately follow it in the prompt column.
+    Returns a dict: { verb: [(follower, count), …] }
+    """
+    import spacy
+    from collections import Counter
+    import os
+
+    nlp = spacy.load("en_core_web_sm")
+    # initialize a Counter for each verb
+    followers_by_verb = {verb: Counter() for verb in top_verbs}
+
+    for doc in nlp.pipe(df['prompt'], batch_size=50):
+        for i, token in enumerate(doc[:-1]):
+            lemma = token.lemma_
+            if token.pos_ == "VERB" and lemma in followers_by_verb:
+                next_word = doc[i+1].text.lower()
+                followers_by_verb[lemma][next_word] += 1
+
+    # write all results to a single CSV
+    with open(os.path.join(out_dir, "follower_words_by_verb.csv"), "w") as f:
+        f.write("verb,follower,count\n")
+        for verb, counter in followers_by_verb.items():
+            for follower, cnt in counter.most_common(top_n):
+                f.write(f"{verb},{follower},{cnt}\n")
+
+    # return the top_n for each verb
+    return {
+        verb: counter.most_common(top_n)
+        for verb, counter in followers_by_verb.items()
+    }
+
+# -----------------------------------------------------------------------------
 # Main & Argument Parsing
 # -----------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(
         description="Run full prompts analysis pipeline.")
+    parser.add_argument("--top_followers", type=int, default=10,
+                        help="How many top follower words to report")
     parser.add_argument("csv", help="Path to filtered_enriched_prompts_subset.csv")
     parser.add_argument("--out", default="analysis_outputs",
                         help="Output directory (will be created if needed)")
@@ -281,6 +320,12 @@ def main():
 
     # 6. Verbs
     verb_counts = run_verb_analysis(df, args.top_verbs, args.out)
+
+    # 7. Followers of top verbs
+    # extract just the lemma strings of the top 10 verbs
+    top_verb_list = [v for v,_ in verb_counts[:args.top_verbs]]
+    followers_by_verb = run_follower_analysis_by_verb(
+        df, top_verb_list, args.top_followers, args.out)
 
     # Map each of the top prompts back to its cluster
     prompt_to_cluster = {row['prompt']: row['cluster']+1 for _, row in df.iterrows()}
@@ -329,6 +374,12 @@ def main():
         f.write("12. Next ninefour verbs:\n")
         for v, c in verb_counts[1:10]:
             f.write(f"  • {v} ({c} occurrences)\n")
+
+        f.write("\nSECTION 7 – WHICH WORDS FOLLOW THE TOP VERBS?\n")
+        for verb, followers in followers_by_verb.items():
+            f.write(f"\n  {verb}:\n")
+            for follower, cnt in followers:
+                f.write(f"    • {follower}: {cnt} occurrences\n")
 
     print(f"✅ All analyses complete. Final report → {final_path}")
 
