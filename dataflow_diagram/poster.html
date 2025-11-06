@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Poster - LLM-Augmented Web Scraping Pipeline</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: white;
+            color: #1a1a1a;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Poster container - optimized for 36" x 48" printing */
+        .poster-container {
+            background: white;
+            width: 100%;
+            max-width: 100%;
+            /* Aspect ratio for 36"x48" poster (3:4) */
+            padding: 60px 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+        
+        /* For screen viewing, scale down */
+        @media screen {
+            body {
+                padding: 20px;
+                transform: scale(0.35);
+                transform-origin: top center;
+            }
+            .poster-container {
+                width: 2857px; /* Approximate width for 36" at screen DPI */
+            }
+        }
+
+        /* Header Section */
+        .poster-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 4px solid #8C1515;
+        }
+
+        .poster-title {
+            font-size: 72px;
+            font-weight: bold;
+            color: #8C1515;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .poster-subtitle {
+            font-size: 48px;
+            color: #2E2D29;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .poster-authors {
+            font-size: 32px;
+            color: #2E2D29;
+            margin-top: 20px;
+        }
+
+        /* Main grid layout - 2 columns */
+        .poster-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        /* Full-width sections */
+        .poster-section-full {
+            grid-column: 1 / -1;
+            margin-bottom: 40px;
+        }
+
+        /* Section styling */
+        .poster-section {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #8C1515;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #8C1515;
+        }
+
+        /* Pipeline Visualization */
+        .pipeline-visual {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .pipeline-stage {
+            flex: 1;
+            background: linear-gradient(135deg, #8C1515 0%, #A51C30 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .stage-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: white;
+            color: #8C1515;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .stage-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .stage-details {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        .stage-details p {
+            margin: 8px 0;
+        }
+
+        .pipeline-arrow {
+            font-size: 48px;
+            color: #8C1515;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #8C1515 0%, #A51C30 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .stat-value {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 24px;
+            opacity: 0.95;
+        }
+
+        /* Topic Distribution */
+        .topic-chart {
+            margin-top: 20px;
+        }
+
+        .topic-item {
+            margin-bottom: 20px;
+        }
+
+        .topic-label-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .topic-bar-container {
+            background: #e2e8f0;
+            height: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .topic-bar-fill {
+            background: linear-gradient(90deg, #8C1515 0%, #A51C30 100%);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 22px;
+            transition: width 1s ease;
+        }
+
+        /* Findings Grid */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .finding-box {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-left: 6px solid #8C1515;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .finding-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .finding-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8C1515;
+            margin-bottom: 10px;
+        }
+
+        .finding-text {
+            font-size: 18px;
+            color: #2E2D29;
+            line-height: 1.5;
+        }
+
+        /* Output Format */
+        .output-format-box {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-left: 6px solid #8C1515;
+            padding: 25px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .json-key {
+            color: #8C1515;
+            font-weight: bold;
+        }
+
+        .json-string {
+            color: #A51C30;
+        }
+
+        /* Implications List */
+        .implications-list {
+            margin-top: 20px;
+        }
+
+        .implication-item {
+            display: flex;
+            align-items: start;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-left: 6px solid #8C1515;
+            border-radius: 8px;
+        }
+
+        .implication-number {
+            background: #8C1515;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .implication-text {
+            font-size: 22px;
+            color: #2E2D29;
+            line-height: 1.6;
+            padding-top: 8px;
+        }
+
+        /* Footer */
+        .poster-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 3px solid #8C1515;
+            text-align: center;
+            font-size: 20px;
+            color: #2E2D29;
+        }
+
+        /* Print optimizations */
+        @media print {
+            body {
+                padding: 0;
+                transform: none !important;
+            }
+
+            .poster-container {
+                padding: 60px 80px;
+                box-shadow: none;
+                width: 100%;
+                max-width: none;
+            }
+
+            /* Ensure colors print */
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        <!-- Header -->
+        <div class="poster-header">
+            <h1 class="poster-title">Building Research-Ready Textual Datasets at Scale</h1>
+            <h2 class="poster-subtitle">An LLM Case Study on Mindfulness Prompts</h2>
+            <div class="poster-authors">[Author Names & Affiliations]</div>
+        </div>
+
+        <!-- Pipeline Architecture - Full Width -->
+        <div class="poster-section-full">
+            <div class="poster-section">
+                <h2 class="section-title">Pipeline Architecture</h2>
+                <div class="pipeline-visual">
+                    <!-- Stage 1 -->
+                    <div class="pipeline-stage">
+                        <div class="stage-number">1</div>
+                        <div class="stage-title">Query Generation</div>
+                        <div class="stage-details">
+                            <p><strong>SerpAPI</strong></p>
+                            <p>29 high-recall queries</p>
+                            <p style="font-size: 18px; opacity: 0.9;">mindfulness, reflection, emotional awareness</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-arrow">→</div>
+
+                    <!-- Stage 2 -->
+                    <div class="pipeline-stage">
+                        <div class="stage-number">2</div>
+                        <div class="stage-title">Parallel Crawling & Extraction</div>
+                        <div class="stage-details">
+                            <p><strong>Firecrawl</strong></p>
+                            <p>32-thread server</p>
+                            <p style="font-size: 18px; opacity: 0.9;">Strip boilerplate, extract prompts</p>
+                        </div>
+                    </div>
+
+                    <div class="pipeline-arrow">→</div>
+
+                    <!-- Stage 3 -->
+                    <div class="pipeline-stage">
+                        <div class="stage-number">3</div>
+                        <div class="stage-title">Enrichment & Classification</div>
+                        <div class="stage-details">
+                            <p><strong>GPT-4</strong></p>
+                            <p>Metadata + Labels</p>
+                            <p style="font-size: 18px; opacity: 0.9;">Few-shot classification</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left Column -->
+        <div class="poster-grid">
+            <!-- Statistics -->
+            <div class="poster-section">
+                <h2 class="section-title">Dataset Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">64,242</div>
+                        <div class="stat-label">Unique Prompts</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">2,081</div>
+                        <div class="stat-label">Domains</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">1 hour</div>
+                        <div class="stat-label">Collection Time</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">29</div>
+                        <div class="stat-label">Search Queries</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic Distribution -->
+            <div class="poster-section">
+                <h2 class="section-title">Topic Distribution</h2>
+                <p style="font-size: 20px; margin-bottom: 15px; color: #2E2D29;">K-Means Clustering (k=10)</p>
+                <div class="topic-chart">
+                    <div class="topic-item">
+                        <div class="topic-label-row">
+                            <span>Self-Reflection & Individuality</span>
+                            <span>52.8%</span>
+                        </div>
+                        <div class="topic-bar-container">
+                            <div class="topic-bar-fill" style="width: 52.8%;">52.8%</div>
+                        </div>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-label-row">
+                            <span>Emotions & Gratitude</span>
+                            <span>5.1%</span>
+                        </div>
+                        <div class="topic-bar-container">
+                            <div class="topic-bar-fill" style="width: 5.1%;">5.1%</div>
+                        </div>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-label-row">
+                            <span>Other Topics (8 clusters)</span>
+                            <span>42.1%</span>
+                        </div>
+                        <div class="topic-bar-container">
+                            <div class="topic-bar-fill" style="width: 42.1%;">42.1%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Findings - Full Width -->
+        <div class="poster-section-full">
+            <div class="poster-section">
+                <h2 class="section-title">Substantive Insights</h2>
+                <div class="findings-grid">
+                    <div class="finding-box">
+                        <div class="finding-icon">📝</div>
+                        <div class="finding-title">Present-Tense Focus</div>
+                        <div class="finding-text">Strong preference for present-tense, first-person language</div>
+                    </div>
+                    <div class="finding-box">
+                        <div class="finding-icon">🔢</div>
+                        <div class="finding-title">Numerical Scaffolding</div>
+                        <div class="finding-text">614 prompts use discrete list lengths ("List 3 things...")</div>
+                    </div>
+                    <div class="finding-box">
+                        <div class="finding-icon">⏰</div>
+                        <div class="finding-title">Temporal Focus</div>
+                        <div class="finding-text">Only 3.8% reference explicit time frames (present-moment focus)</div>
+                    </div>
+                    <div class="finding-box">
+                        <div class="finding-icon">😊</div>
+                        <div class="finding-title">Positive Affect</div>
+                        <div class="finding-text">Low-intensity positive affect dominates, echoing self-affirmation theory</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Row: Output Format and Implications -->
+        <div class="poster-grid">
+            <!-- Output Format -->
+            <div class="poster-section">
+                <h2 class="section-title">Output Format</h2>
+                <div class="output-format-box">
+                    {<br>
+                    &nbsp;&nbsp;<span class="json-key">"raw_text"</span>: <span class="json-string">"Name three thoughts that made you smile today."</span>,<br>
+                    &nbsp;&nbsp;<span class="json-key">"metadata"</span>: {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"date"</span>: <span class="json-string">"2024-01-15"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"author"</span>: <span class="json-string">"..."</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"url"</span>: <span class="json-string">"..."</span><br>
+                    &nbsp;&nbsp;},<br>
+                    &nbsp;&nbsp;<span class="json-key">"label"</span>: <span class="json-string">"Self-Reflection & Individuality"</span><br>
+                    }
+                </div>
+                <p style="font-size: 18px; margin-top: 15px; color: #2E2D29; font-style: italic;">
+                    Line-delimited JSON, thread-safe logging, ready for downstream analysis
+                </p>
+            </div>
+
+            <!-- Research Implications -->
+            <div class="poster-section">
+                <h2 class="section-title">Research Implications</h2>
+                <div class="implications-list">
+                    <div class="implication-item">
+                        <div class="implication-number">1</div>
+                        <div class="implication-text">
+                            Fine-grained studies of affective discourse at unprecedented scale
+                        </div>
+                    </div>
+                    <div class="implication-item">
+                        <div class="implication-number">2</div>
+                        <div class="implication-text">
+                            Modular, LLM-augmented framework lowers barriers for scholars
+                        </div>
+                    </div>
+                    <div class="implication-item">
+                        <div class="implication-number">3</div>
+                        <div class="implication-text">
+                            Exposes homogenization across 2,000+ domains, inviting SEO/diffusion studies
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="poster-footer">
+            <p><strong>Open Science:</strong> Code, corpus, and analysis notebooks available upon publication</p>
+            <p>Fully reproducible via Docker containers | Permissive license | Non-commercial use</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for topic bars on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const bars = document.querySelectorAll('.topic-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
+

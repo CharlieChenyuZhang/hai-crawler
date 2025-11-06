@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM-Augmented Web Scraping Pipeline - Mindfulness Prompts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Building Research-Ready Textual Datasets at Scale</h1>
+            <h2>An LLM Case Study on Mindfulness Prompts</h2>
+        </header>
+
+        <!-- Pipeline Overview -->
+        <section class="pipeline-section">
+            <h3>Pipeline Architecture</h3>
+            <div class="pipeline-flow">
+                <!-- Stage 1 -->
+                <div class="stage" data-stage="1">
+                    <div class="stage-header">
+                        <span class="stage-number">1</span>
+                        <h4>Query Generation</h4>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-icon">🔍</div>
+                        <p><strong>SerpAPI</strong></p>
+                        <p>29 high-recall queries</p>
+                        <p class="detail">mindfulness, reflection, emotional awareness</p>
+                    </div>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <!-- Stage 2 -->
+                <div class="stage" data-stage="2">
+                    <div class="stage-header">
+                        <span class="stage-number">2</span>
+                        <h4>Parallel Crawling & Extraction</h4>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-icon">🕷️</div>
+                        <p><strong>Firecrawl</strong></p>
+                        <p>32-thread server</p>
+                        <p class="detail">Strip boilerplate, extract prompts</p>
+                    </div>
+                </div>
+
+                <div class="arrow">→</div>
+
+                <!-- Stage 3 -->
+                <div class="stage" data-stage="3">
+                    <div class="stage-header">
+                        <span class="stage-number">3</span>
+                        <h4>Enrichment & Classification</h4>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-icon">🤖</div>
+                        <p><strong>GPT-4</strong></p>
+                        <p>Metadata + Labels</p>
+                        <p class="detail">Few-shot classification</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Statistics -->
+        <section class="stats-section">
+            <h3>Dataset Statistics</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">64,242</div>
+                    <div class="stat-label">Unique Prompts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,081</div>
+                    <div class="stat-label">Domains</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1 hour</div>
+                    <div class="stat-label">Collection Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">29</div>
+                    <div class="stat-label">Search Queries</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic Distribution -->
+        <section class="topics-section">
+            <h3>Topic Distribution (K-Means, k=10)</h3>
+            <div class="topics-container">
+                <div class="topic-bar">
+                    <div class="topic-label">Self-Reflection & Individuality</div>
+                    <div class="topic-bar-fill" style="width: 52.8%" data-percent="52.8%">
+                        <span class="topic-percent">52.8%</span>
+                    </div>
+                </div>
+                <div class="topic-bar">
+                    <div class="topic-label">Emotions & Gratitude</div>
+                    <div class="topic-bar-fill" style="width: 5.1%" data-percent="5.1%">
+                        <span class="topic-percent">5.1%</span>
+                    </div>
+                </div>
+                <div class="topic-bar">
+                    <div class="topic-label">Other Topics (8 clusters)</div>
+                    <div class="topic-bar-fill" style="width: 42.1%" data-percent="42.1%">
+                        <span class="topic-percent">42.1%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Findings -->
+        <section class="findings-section">
+            <h3>Substantive Insights</h3>
+            <div class="findings-grid">
+                <div class="finding-card">
+                    <div class="finding-icon">📝</div>
+                    <div class="finding-title">Present-Tense Focus</div>
+                    <div class="finding-text">Strong preference for present-tense, first-person language</div>
+                </div>
+                <div class="finding-card">
+                    <div class="finding-icon">🔢</div>
+                    <div class="finding-title">Numerical Scaffolding</div>
+                    <div class="finding-text">614 prompts use discrete list lengths ("List 3 things...")</div>
+                </div>
+                <div class="finding-card">
+                    <div class="finding-icon">⏰</div>
+                    <div class="finding-title">Temporal Focus</div>
+                    <div class="finding-text">Only 3.8% reference explicit time frames (present-moment focus)</div>
+                </div>
+                <div class="finding-card">
+                    <div class="finding-icon">😊</div>
+                    <div class="finding-title">Positive Affect</div>
+                    <div class="finding-text">Low-intensity positive affect dominates, echoing self-affirmation theory</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Output Format -->
+        <section class="output-section">
+            <h3>Output Format</h3>
+            <div class="output-card">
+                <div class="output-structure">
+                    <div class="output-item">
+                        <span class="output-key">raw_text</span>
+                        <span class="output-arrow">→</span>
+                        <span class="output-desc">Extracted prompt</span>
+                    </div>
+                    <div class="output-item">
+                        <span class="output-key">metadata</span>
+                        <span class="output-arrow">→</span>
+                        <span class="output-desc">Date, author, URL</span>
+                    </div>
+                    <div class="output-item">
+                        <span class="output-key">label</span>
+                        <span class="output-arrow">→</span>
+                        <span class="output-desc">GPT-4 thematic classification</span>
+                    </div>
+                </div>
+                <p class="output-note">Line-delimited JSON, thread-safe logging, ready for downstream analysis</p>
+            </div>
+        </section>
+
+        <!-- Research Implications -->
+        <section class="implications-section">
+            <h3>Research Implications</h3>
+            <div class="implications-list">
+                <div class="implication-item">
+                    <span class="bullet">1</span>
+                    <p>Fine-grained studies of affective discourse at unprecedented scale</p>
+                </div>
+                <div class="implication-item">
+                    <span class="bullet">2</span>
+                    <p>Modular, LLM-augmented framework lowers barriers for scholars</p>
+                </div>
+                <div class="implication-item">
+                    <span class="bullet">3</span>
+                    <p>Exposes homogenization across 2,000+ domains, inviting SEO/diffusion studies</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p><strong>Open Science:</strong> Code, corpus, and analysis notebooks available upon publication</p>
+            <p>Fully reproducible via Docker containers | Permissive license | Non-commercial use</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

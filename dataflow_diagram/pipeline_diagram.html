@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Architecture - Research Paper Figure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: white;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .figure-container {
+            width: 1000px;
+            max-width: 100%;
+            background: white;
+        }
+
+        .figure-title {
+            font-size: 14pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #000;
+        }
+
+        .pipeline-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+
+        .stage-box {
+            flex: 1;
+            min-width: 220px;
+            border: 2px solid #000;
+            border-radius: 8px;
+            padding: 20px;
+            background: white;
+            position: relative;
+        }
+
+        .stage-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            font-weight: bold;
+            font-size: 12pt;
+        }
+
+        .stage-title {
+            font-size: 13pt;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #000;
+        }
+
+        .stage-content {
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .stage-content p {
+            margin: 6px 0;
+        }
+
+        .stage-label {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .arrow {
+            font-size: 24pt;
+            color: #000;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .stat-label {
+            font-size: 10pt;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+            .figure-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="figure-container">
+        <div class="figure-title">Figure 1: LLM-Augmented Web Scraping Pipeline Architecture</div>
+        
+        <div class="pipeline-diagram">
+            <!-- Stage 1 -->
+            <div class="stage-box">
+                <div class="stage-number">Stage 1</div>
+                <div class="stage-title">Query Generation</div>
+                <div class="stage-content">
+                    <p><span class="stage-label">Tool:</span> SerpAPI</p>
+                    <p><span class="stage-label">Output:</span> 29 high-recall queries</p>
+                    <p><span class="stage-label">Domains:</span> mindfulness, reflection, emotional awareness</p>
+                </div>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <!-- Stage 2 -->
+            <div class="stage-box">
+                <div class="stage-number">Stage 2</div>
+                <div class="stage-title">Parallel Crawling & Extraction</div>
+                <div class="stage-content">
+                    <p><span class="stage-label">Tool:</span> Firecrawl</p>
+                    <p><span class="stage-label">Threads:</span> 32-thread server</p>
+                    <p><span class="stage-label">Process:</span> Strip boilerplate, extract candidate prompts</p>
+                </div>
+            </div>
+
+            <div class="arrow">→</div>
+
+            <!-- Stage 3 -->
+            <div class="stage-box">
+                <div class="stage-number">Stage 3</div>
+                <div class="stage-title">Enrichment & Classification</div>
+                <div class="stage-content">
+                    <p><span class="stage-label">Tool:</span> GPT-4</p>
+                    <p><span class="stage-label">Enrichment:</span> Metadata (date, author, URL)</p>
+                    <p><span class="stage-label">Classification:</span> Few-shot thematic labeling</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value">64,242</div>
+                <div class="stat-label">Unique Prompts</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">2,081</div>
+                <div class="stat-label">Domains</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">1 hour</div>
+                <div class="stat-label">Collection Time</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">10</div>
+                <div class="stat-label">Topic Clusters</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ensure proper rendering for print/PDF
+        window.addEventListener('load', function() {
+            // Force layout recalculation
+            document.body.style.display = 'block';
+        });
+
+        // Handle print
+        window.addEventListener('beforeprint', function() {
+            document.body.style.padding = '20px';
+        });
+    </script>
+</body>
+</html>
+

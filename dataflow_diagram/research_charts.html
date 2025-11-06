@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper Charts - Mindfulness Prompts Dataset</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: white;
+            padding: 40px;
+            color: #000;
+        }
+
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            background: white;
+            page-break-inside: avoid;
+        }
+
+        .figure-title {
+            font-size: 11pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .chart-wrapper {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background: white;
+            margin-bottom: 10px;
+        }
+
+        .chart-subtitle {
+            font-size: 10pt;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+            .chart-container {
+                page-break-inside: avoid;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Figure 1: Topic Distribution -->
+    <div class="chart-container">
+        <div class="figure-title">Figure 1: Distribution of Prompt Topics Across 10 Clusters</div>
+        <div class="chart-wrapper">
+            <canvas id="topicChart"></canvas>
+        </div>
+        <div class="chart-subtitle">K-Means clustering (k=10) applied to 64,242 prompts. Cluster 1 (Self-Reflection & Individuality) dominates with 52.8% of prompts.</div>
+    </div>
+
+    <!-- Figure 2: Top Verbs -->
+    <div class="chart-container">
+        <div class="figure-title">Figure 2: Most Frequent Action Verbs in Mindfulness Prompts</div>
+        <div class="chart-wrapper">
+            <canvas id="verbChart"></canvas>
+        </div>
+        <div class="chart-subtitle">Frequency of top 10 verbs across all prompts, indicating preference for reflective and active language.</div>
+    </div>
+
+    <!-- Figure 3: Numerical Scaffolding -->
+    <div class="chart-container">
+        <div class="figure-title">Figure 3: Distribution of Numerically Scaffolded Prompts</div>
+        <div class="chart-wrapper">
+            <canvas id="numberChart"></canvas>
+        </div>
+        <div class="chart-subtitle">Prompts using discrete list lengths (e.g., "List 3 things..."). Numbers 3, 5, and 10 are most common, appearing 614+ times total.</div>
+    </div>
+
+    <!-- Figure 4: Temporal References -->
+    <div class="chart-container">
+        <div class="figure-title">Figure 4: Explicit Temporal References in Prompts</div>
+        <div class="chart-wrapper">
+            <canvas id="temporalChart"></canvas>
+        </div>
+        <div class="chart-subtitle">Only 3.8% of prompts reference explicit time frames, indicating a present-moment focus in popular mindfulness rhetoric.</div>
+    </div>
+
+    <script>
+        // Chart.js defaults for publication quality
+        Chart.defaults.font.family = "'Times New Roman', Times, serif";
+        Chart.defaults.font.size = 11;
+        Chart.defaults.color = '#000';
+        Chart.defaults.borderColor = '#333';
+        Chart.defaults.backgroundColor = '#f5f5f5';
+
+        // Figure 1: Topic Distribution
+        const topicCtx = document.getElementById('topicChart').getContext('2d');
+        new Chart(topicCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'C1: Self-Reflection\n& Individuality',
+                    'C2: Personal Identity\n& Purpose',
+                    'C8: Personal Reflection\n& Experience',
+                    'C4: Reflective Personal\nGrowth Queries',
+                    'C10: Personal Reflection\n& Emotions',
+                    'C7: Self-Reflection\n& Identity Inquiry',
+                    'C9: Personal Perception\n& Relationships',
+                    'C3: Personal Growth\n& Self-Reflection',
+                    'C5: Self Reflection\n& Ideal Future',
+                    'C6: Personal Growth\n& Learning Reflection'
+                ],
+                datasets: [{
+                    label: 'Percentage of Prompts',
+                    data: [52.8, 12.4, 10.3, 5.6, 5.1, 4.7, 4.3, 3.6, 0.7, 0.5],
+                    backgroundColor: [
+                        'rgba(70, 130, 180, 0.8)',  // Steel blue for dominant
+                        'rgba(100, 149, 237, 0.8)',
+                        'rgba(135, 206, 250, 0.8)',
+                        'rgba(176, 196, 222, 0.8)',
+                        'rgba(176, 196, 222, 0.8)',
+                        'rgba(176, 196, 222, 0.8)',
+                        'rgba(176, 196, 222, 0.8)',
+                        'rgba(176, 196, 222, 0.8)',
+                        'rgba(220, 220, 220, 0.8)',
+                        'rgba(220, 220, 220, 0.8)'
+                    ],
+                    borderColor: '#000',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1.8,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.x + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 60,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            },
+                            font: {
+                                size: 10
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Percentage of Prompts',
+                            font: {
+                                size: 11,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: '#e0e0e0'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 9
+                            }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Figure 2: Top Verbs
+        const verbCtx = document.getElementById('verbChart').getContext('2d');
+        new Chart(verbCtx, {
+            type: 'bar',
+            data: {
+                labels: ['feel', 'write', 'make', 'do', 'describe', 'have', 'want', 'reflect', 'think', 'take'],
+                datasets: [{
+                    label: 'Frequency',
+                    data: [7544, 5969, 5515, 4619, 3399, 3224, 2543, 2065, 2021, 1824],
+                    backgroundColor: 'rgba(100, 149, 237, 0.7)',
+                    borderColor: '#000',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1.5,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Frequency: ' + context.parsed.x.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            },
+                            font: {
+                                size: 10
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Frequency',
+                            font: {
+                                size: 11,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: '#e0e0e0'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Figure 3: Numerical Scaffolding
+        const numberCtx = document.getElementById('numberChart').getContext('2d');
+        
+        // Aggregate data from top_numbers.csv - showing most common numbers
+        const numberData = {
+            labels: ['3', '5', '10', '1', '2', '7', '15', '20', '30', '6'],
+            counts: [340, 234, 139, 67, 39, 24, 23, 18, 12, 35] // Aggregated from the data
+        };
+
+        new Chart(numberCtx, {
+            type: 'bar',
+            data: {
+                labels: numberData.labels,
+                datasets: [{
+                    label: 'Number of Prompts',
+                    data: numberData.counts,
+                    backgroundColor: 'rgba(70, 130, 180, 0.7)',
+                    borderColor: '#000',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1.8,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Prompts: ' + context.parsed.y;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Prompts',
+                            font: {
+                                size: 11,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: '#e0e0e0'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 11
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'List Length (e.g., "List N things...")',
+                            font: {
+                                size: 11,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Figure 4: Temporal References
+        // Data: 3.8% of prompts have temporal references
+        // Of those 3.8%: this week (30.9%), this year (29.5%), this month (10.4%)
+        // Remaining = 100 - 30.9 - 29.5 - 10.4 = 29.2% of temporal prompts
+        const temporalCtx = document.getElementById('temporalChart').getContext('2d');
+        new Chart(temporalCtx, {
+            type: 'pie',
+            data: {
+                labels: ['This week', 'This year', 'This month', 'Other temporal', 'No temporal reference'],
+                datasets: [{
+                    data: [
+                        1.17,   // 30.9% of 3.8% = 1.17% of total
+                        1.12,   // 29.5% of 3.8% = 1.12% of total
+                        0.40,   // 10.4% of 3.8% = 0.40% of total
+                        1.11,   // 29.2% of 3.8% = 1.11% of total
+                        96.2    // 96.2% with no reference
+                    ],
+                    backgroundColor: [
+                        'rgba(70, 130, 180, 0.8)',
+                        'rgba(100, 149, 237, 0.8)',
+                        'rgba(135, 206, 250, 0.8)',
+                        'rgba(176, 196, 222, 0.8)',
+                        'rgba(220, 220, 220, 0.8)'
+                    ],
+                    borderColor: '#000',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                aspectRatio: 1.2,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            font: {
+                                size: 10
+                            },
+                            padding: 15
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                let percentage;
+                                if (label === 'No temporal reference') {
+                                    percentage = '96.2% of all prompts';
+                                } else if (label === 'This week') {
+                                    percentage = '1.2% of all prompts (30.9% of temporal)';
+                                } else if (label === 'This year') {
+                                    percentage = '1.1% of all prompts (29.5% of temporal)';
+                                } else if (label === 'This month') {
+                                    percentage = '0.4% of all prompts (10.4% of temporal)';
+                                } else {
+                                    percentage = '1.1% of all prompts (29.2% of temporal)';
+                                }
+                                return label + ': ' + percentage;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Ensure charts render properly for print
+        window.addEventListener('beforeprint', function() {
+            Chart.helpers.each(Chart.instances, function(instance) {
+                instance.resize();
+            });
+        });
+    </script>
+</body>
+</html>
